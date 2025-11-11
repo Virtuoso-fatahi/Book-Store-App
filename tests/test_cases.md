@@ -115,6 +115,8 @@
 
 *Evidence Path:* tests/evidence/(tc4.png)
 
+---
+
 ### TC-CAT-005: Search with Whitespace Trim  
 *Priority:* P2  
 *Pre-conditions:*
@@ -137,7 +139,9 @@
 
 *Evidence Path:* tests/evidence/tc5.png
 
-### TC-CAT-006: Add Book to Cart  
+---
+
+### TC-CART-001: Add Book to Cart  
 *Priority:* P1  
 *Pre-conditions:*
 - App loaded on Catalog page
@@ -166,7 +170,7 @@
 
 ---
 
-### TC-CAT-007: Add Multiple Different Books
+### TC-CART-002: Add Multiple Different Books
 *Priority:* P1  
 *Pre-conditions:*
 - Catalog page loaded
@@ -192,7 +196,7 @@
 
 ---
 
-### TC-CAT-008: Update Item Quantity
+### TC-CART-003: Update Item Quantity
 *Priority:* P1  
 *Pre-conditions:*
 - Cart page with book item (qty=1)
@@ -219,7 +223,9 @@
 
 *Evidence Path:* tests/evidence/Update_Item_quantity.png
 
-### TC-CAT-009: Remove Item from Cart
+---
+
+### TC-CART-004: Remove Item from Cart
 *Priority:* P1  
 *Pre-conditions:*
 - Cart with 2+ items
@@ -246,7 +252,9 @@
 *Evidence Path:* tests/evidence/Remove_item_from_cart_1.png
 tests/evidence/Remove_item_from_cart_2.png
 
-### TC-CAT-010: Cart Persists Across Refresh
+---
+
+### TC-CART-005: Cart Persists Across Refresh
 *Priority:* P1  
 *Pre-conditions:*
 - Cart with 2 items (qty=1 and qty=3)
@@ -272,8 +280,9 @@ tests/evidence/Remove_item_from_cart_2.png
 tests/evidence/Cart_persists_across_refresh_2.png
 tests/evidence/Cart_persists_across_refresh_3.png
 
+---
 
-### TC-CART-011: Empty Cart Message
+### TC-CART-006: Empty Cart Message
 *Priority:* P2  
 *Pre-conditions:*
 - App loaded
@@ -295,8 +304,9 @@ tests/evidence/Cart_persists_across_refresh_3.png
 
 *Evidence Path:* tests/evidence/Empty_cart_message.png
 
+---
 
-### TC-CAT-012: Calculate Subtotal Correctly
+### TC-CART-007: Calculate Subtotal Correctly
 *Priority:* P1  
 *Pre-conditions:*
 - Cart with items: Book A (price R10.00, qty=2), Book B (price R15.00, qty=1)
