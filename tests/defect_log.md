@@ -1,19 +1,22 @@
-ID: BUG-<area>-001
-- Summary: The user is unable to complete payment at chekout
-- Severity:Critical
-- priority:high
-- Environment:Chrome Browser, Windows 11; stable network
-- Affected FR(s): FR-O03: Payments — Paystack init with configured currency; exact cents; success/cancel/error handling; verify updates order to Paid
+## BUG-001
+**Summary:** Search with leading/trailing spaces returns no results  
+**Severity/Priority:** Minor / Medium  
+**Environment:** Google chrome, Windows 11   
 
-- Steps to Reproduce: Numbered
-    1. add a book to cart
-    2. proceed to checkout
-    3. Fill in the datails
-    4. click the pay now button
+**Steps to Reproduce:**
+1. Go to the Catalog page  
+2. In the search bar, type "  To Kill a Mockingbird  " (with spaces before and after)  
+3. Press Enter  
 
-- Expected Result: payment should go through and show a confirmation message
+**Expected Result:**  
+The system should trim the extra spaces and return results for “To Kill a Mockingbird.”  
 
-- Actual Result: payment is not succesful 
+**Actual Result:**  
+No books are shown when spaces are present around the search query.  
 
-- Attachments 
-- Notes: when procceding to pay the user is unable to pay and an error message indicating that the payment could not be processed 
+**Attachments:**  
+`tests/evidence/tc5.png`  
+
+**Notes:**  
+- This can confuse users since they might accidentally type spaces.  
+- The fix may involve trimming the input value before searching.  
