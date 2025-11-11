@@ -521,3 +521,32 @@ tests/evidence/Cart_persists_across_refresh_3.png
 **Evidence Path:** `tests/evidence/cart-fatahi-8.png`
 
 ---
+
+### TC-PAYMENT-002: Currency Validation 
+**Priority:** P1  
+**Pre-conditions:**
+- Cart has at least one item selected
+- User details filled
+- User click on "Pay Now" button
+
+**Steps:**
+1. Check payment modal displays correct symbol
+2. Verify currency config is NGN/GHS/USD/ZAR
+3. Amount shown in minor units (cents)
+
+**Expected Result:**
+- Supported currency accepted
+- No preflight error
+- Payment proceeds
+
+**Actual Result**
+- Payment function not accessible
+- Error message: "We could not start this transaction" is displayed
+
+**Post-conditions:**
+- Payment not initialized
+
+**Evidence Path:** `tests/evidence/cart-fatahi-8.png`
+
+---
+
