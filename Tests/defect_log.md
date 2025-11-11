@@ -15,5 +15,5 @@ ID: BUG-<area>-001
 
 - Actual Result: payment is not succesful 
 
-- Attachments: Paths to screenshots/videos
+- Attachments 
 - Notes: when procceding to pay the user is unable to pay and an error message indicating that the payment could not be processed 

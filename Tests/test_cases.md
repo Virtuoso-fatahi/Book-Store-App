@@ -58,4 +58,4 @@ Expected Result: Books related to the sort data should appear
 Actual Results: the app does not have the sort function so no data is returned
 
 Post-conditions: only sorted items should be returned
-Evidence: Screenshot/gif paths
+Evidence:
