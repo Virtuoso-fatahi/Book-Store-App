@@ -136,3 +136,185 @@
 - Search input should be cleaned automatically by trimming spaces
 
 *Evidence Path:* tests/evidence/tc5.png
+
+### TC-CAT-006: Add Book to Cart  
+*Priority:* P1  
+*Pre-conditions:*
+- App loaded on Catalog page
+- At least 1 book available in stock
+
+*Steps:*
+1. Browse catalog
+2. Locate a book and click "Buy Now" button
+3. Verify cart update (visual feedback, badge count)
+4. Navigate to Cart page
+5. Confirm book appears in cart with quantity=1
+
+*Expected Result:*
+- Book added to cart with quantity 1
+- Cart icon badge increments
+- Cart page shows added item
+
+*Actual Result:* 
+- Book added to the cart successfully.
+
+*Post-conditions:*
+- Book persists in cart (localStorage)
+- Cart count updated
+
+*Evidence Path:* tests/evidence/Add_book_to_cart.png
+
+---
+
+### TC-CAT-007: Add Multiple Different Books
+*Priority:* P1  
+*Pre-conditions:*
+- Catalog page loaded
+
+*Steps:*
+1. Add Book A to cart
+2. Add Book B to cart
+3. Navigate to Cart page
+4. Verify both books present with quantity=1 each
+
+*Expected Result:*
+- Both books in cart as separate line items
+- Cart total reflects both prices
+- Each item shows correct price and quantity
+
+*Actual Result:* 
+- Multiple different books are added succcessfully
+
+*Post-conditions:*
+- Multiple items persist in localStorage
+
+*Evidence Path:* tests/evidence/Multiple_different_books.png
+
+---
+
+### TC-CAT-008: Update Item Quantity
+*Priority:* P1  
+*Pre-conditions:*
+- Cart page with book item (qty=1)
+
+*Steps:*
+1. Navigate to Cart page
+2. Locate quantity input for book
+3. Change quantity from 1 → 3
+4. Confirm update
+5. Verify cart totals recalculated
+
+*Expected Result:*
+- Quantity updates to 3
+- Subtotal recalculated: price × 3
+- Cart total reflects new amount
+- No error
+
+*Actual Result:* 
+- Item quatity is updated as per the users selection
+
+*Post-conditions:*
+- New qty persisted
+- Totals accurate
+
+*Evidence Path:* tests/evidence/Update_Item_quantity.png
+
+### TC-CAT-009: Remove Item from Cart
+*Priority:* P1  
+*Pre-conditions:*
+- Cart with 2+ items
+
+*Steps:*
+1. Cart page open
+2. Locate "Remove" icon for first item
+3. Click to remove
+4. Verify item disappears
+
+*Expected Result:*
+- Item removed from cart
+- Cart total recalculated
+- Cart badge decremented
+- Removed item gone permanently
+
+*Actual Result:* 
+- Item successfully removed from cart permanently
+
+*Post-conditions:*
+- Cart updated in localStorage
+- Remaining items unchanged
+
+*Evidence Path:* tests/evidence/Remove_item_from_cart_1.png
+tests/evidence/Remove_item_from_cart_2.png
+
+### TC-CAT-010: Cart Persists Across Refresh
+*Priority:* P1  
+*Pre-conditions:*
+- Cart with 2 items (qty=1 and qty=3)
+
+*Steps:*
+1. Note cart items and totals
+2. Close/refresh browser (F5 or Cmd+R)
+3. Navigate back to Cart page
+4. Verify same items and quantities present
+
+*Expected Result:*
+- Cart contents unchanged after refresh
+- Quantities and totals match previous session
+- localStorage persisted correctly
+
+*Actual Result:* 
+- Items on the cart are not lost after refreshing or leaving the cart page
+
+*Post-conditions:*
+- Cart data persistent across sessions
+
+*Evidence Path:* tests/evidence/Cart_persists_across_refresh_1.png
+tests/evidence/Cart_persists_across_refresh_2.png
+tests/evidence/Cart_persists_across_refresh_3.png
+
+
+### TC-CART-011: Empty Cart Message
+*Priority:* P2  
+*Pre-conditions:*
+- App loaded
+
+*Steps:*
+1. Navigate to Cart page without adding items
+2. Or remove all items from cart
+3. Observe empty state
+
+*Expected Result:*
+- Message displayed: "Your cart is empty. Continue shopping"
+- No totals/checkout button visible
+
+*Actual Result:* 
+- On an empty cart you get a prompt, "Your cart is empty. Continue shopping"
+
+*Post-conditions:*
+- Cart remains empty until items added
+
+*Evidence Path:* tests/evidence/Empty_cart_message.png
+
+
+### TC-CAT-012: Calculate Subtotal Correctly
+*Priority:* P1  
+*Pre-conditions:*
+- Cart with items: Book A (price R10.00, qty=2), Book B (price R15.00, qty=1)
+
+*Steps:*
+1. Verify subtotal calculation
+2. Math: (10.00 × 2) + (15.00 × 1) = R35.00
+3. Check cart page displays R35.00
+
+*Expected Result:*
+- Subtotal = sum(price × qty) for all items
+- Formatted to 2 decimal places
+- No rounding errors
+
+*Actual Result:* 
+- Subtotal calculations match with the pricing x quantity of the books in the cart
+
+*Post-conditions:*
+- Subtotal accurate and persisted
+
+*Evidence Path:* tests/evidence/calculates_subtotal_correctly.png
