@@ -139,7 +139,7 @@
 
 *Evidence Path:* tests/evidence/tc5.png
 
----
+------
 
 ### TC-CART-001: Add Book to Cart  
 *Priority:* P1  
