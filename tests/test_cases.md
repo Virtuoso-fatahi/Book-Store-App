@@ -328,3 +328,235 @@ tests/evidence/Cart_persists_across_refresh_3.png
 - Subtotal accurate and persisted
 
 *Evidence Path:* tests/evidence/calculates_subtotal_correctly.png
+
+---------
+
+### TC-CHECKOUT-001: Enter Shipping Information
+**Priority:** P1  
+**Pre-conditions:**
+- Cart with items
+- Checkout button accessible
+
+**Steps:**
+1. Click "Proceed to Checkout"
+2. Navigate to Shipping step (step 1 of 4)
+3. Fill form: Full Name, Email, Address, City, Country, Postal Code
+4. Click "Next" to proceed
+5. Verify data preserved on next step
+
+**Expected Result:**
+- Shipping form displays all required fields
+- Form fields accept input
+- Validation passes with valid data
+- Input persists when navigating back
+- Next button enabled after form completion
+
+**Actual Result:**
+- Form field accepted data
+- next button functions correctly
+
+**Post-conditions:**
+- Shipping data stored in session
+- Navigation to Review step
+
+**Evidence Path:** `tests/evidence/cart-fatahi-2.png`
+
+---
+
+### TC-CHECKOUT-002: Validate Email Format 
+**Priority:** P1  
+**Pre-conditions:**
+- Checkout Shipping step
+
+**Steps:**
+1. Fill all fields except Email
+2. Enter invalid email: "notanemail"
+3. Click Next
+4. Observe validation error
+
+**Expected Result:**
+- Error message: "Please enter a valid email address"
+- Email field highlighted/focused
+- Next button disabled
+- Form data not cleared
+
+**Actual Result**
+- Error message: "please fill out this field" when input is empty
+- next button not disabled when email is empty
+- form only show error message when the "@" sign is missing
+
+**Post-conditions:**
+- Form remains on Shipping step
+- User can correct and retry
+
+**Evidence Path:** `tests/evidence/cart-fatahi-3.png`
+
+---
+
+### TC-CHECKOUT-003: Require All Shipping Fields
+**Priority:** P1  
+**Pre-conditions:**
+- Checkout Shipping step
+
+**Steps:**
+1. Leave "Full Name" field empty
+2. Fill other fields
+3. Click Next
+
+**Expected Result:**
+- Error message: "Full Name is required"
+- Next button disabled
+- Focus on empty field
+
+**Actual Result:**
+- form throws an error message when any input field is empty
+
+**Post-conditions:**
+- Form stays on Shipping step
+- User prompted to complete
+
+**Evidence Path:** `tests/evidence/cart-fatahi-3B.png`
+
+---
+
+### TC-CHECKOUT-004: Review Order Summary
+**Priority:** P1  
+**Pre-conditions:**
+- Shipping step completed, moved to Review step
+
+**Steps:**
+1. Verify Review step (step 2 of 4) displays:
+   - All cart items with price/qty
+   - Subtotal
+   - Shipping fee
+   - Tax (8% of subtotal)
+   - Total
+   - Shipping address summary
+
+**Expected Result:**
+- All data clearly displayed and accurate
+- Totals calculated correctly
+- Address shows as entered
+- Back/Next buttons present
+
+**Actual Result:**
+- data displayed correctly except the shipping address
+- back/next buttons present
+
+**Post-conditions:**
+- Review data reflects checkout data
+- Ready to proceed to Payment
+
+**Evidence Path:** `tests/evidence/cart-fatahi-5.png`
+
+---
+
+### TC-CHECKOUT-005: Back Button Preserves Data
+**Priority:** P1  
+**Pre-conditions:**
+- On Review step (step 2)
+
+**Steps:**
+1. Click "Back" button
+2. Return to Shipping step
+3. Verify all entered data still present
+
+**Expected Result:**
+- Full Name, Email, Address, etc. unchanged
+- Form fields populated with previous input
+- No data loss
+
+**Actual Result**
+-- form data preserve on clicking the back button
+
+**Post-conditions:**
+- Can edit shipping if needed
+- Can proceed forward again
+
+**Evidence Path:** `tests/evidence/cart-fatahi-6.png`
+
+---
+
+### TC-CHECKOUT-006: Checkout Disabled with Empty Cart
+**Priority:** P1  
+**Pre-conditions:**
+- Cart is empty
+
+**Steps:**
+1. Navigate to Catalog page
+2. Attempt to click "Checkout" or "Proceed to Checkout"
+
+**Expected Result:**
+- Checkout button disabled or hidden
+- Or if clicked: error message "Add items to cart before checkout"
+
+**Actual Result:** 
+- the checkout button is disabled when the cart is empty
+
+**Post-conditions:**
+- Cannot proceed to checkout with empty cart
+
+**Evidence Path:** `tests/evidence/cart-fatahi-7.png`
+
+---
+
+### TC-PAYMENT-001: Initialize Paystack Payment
+**Priority:** P1  
+**Pre-conditions:**
+- Checkout complete, on Payment step (step 3)
+- Valid shipping and review data
+- Paystack SDK configured
+
+**Steps:**
+1. Verify Payment step displays total amount
+2. Click "Pay Now" or similar button
+3. Paystack modal/iframe loads
+4. Verify amount shown matches total
+
+**Expected Result:**
+- Paystack payment modal displays
+- Amount in NGN (or configured currency) shown correctly
+- Modal interactive and responsive
+
+**Actual Result:**
+- payment interface display properly
+- currency not configurable
+- paystack payment modal display with an error interface
+- payment gateway not initialized
+
+**Post-conditions:**
+- Payment gateway initialized
+- Ready for user input or test card
+
+**Evidence Path:** `tests/evidence/cart-fatahi-8.png`
+
+---
+
+### TC-PAYMENT-002: Currency Validation 
+**Priority:** P1  
+**Pre-conditions:**
+- Cart has at least one item selected
+- User details filled
+- User click on "Pay Now" button
+
+**Steps:**
+1. Check payment modal displays correct symbol
+2. Verify currency config is NGN/GHS/USD/ZAR
+3. Amount shown in minor units (cents)
+
+**Expected Result:**
+- Supported currency accepted
+- No preflight error
+- Payment proceeds
+
+**Actual Result**
+- Payment function not accessible
+- Error message: "We could not start this transaction" is displayed
+
+**Post-conditions:**
+- Payment not initialized
+
+**Evidence Path:** `tests/evidence/cart-fatahi-8.png`
+
+---
+
