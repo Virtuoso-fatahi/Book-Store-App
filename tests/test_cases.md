@@ -498,6 +498,53 @@ tests/evidence/Cart_persists_across_refresh_3.png
 
 **Evidence Path:** `tests/evidence/cart-fatahi-7.png`
 
+### TC-CHECKOUT-007: Apply Valid Coupon
+**Priority:** P2  
+**Pre-conditions:**
+- Cart with items
+- Valid coupon code
+
+**Steps:**
+1. Locate coupon input field
+2. Enter coupon code
+
+**Expected Result:**
+- Coupon accepted
+
+**Actual Results**
+- Checkout is not successful
+- Coupon details not available
+
+**Post-conditions:**
+- Coupon field required
+
+**Evidence Path:** 
+tests/evidence/Apply_valid_coupon.png
+
+
+### TC-CART-008: Reject Invalid Coupon
+**Priority:** P2  
+**Pre-conditions:**
+- Cart with items
+- Valid coupon code
+
+**Steps:**
+1. Locate coupon input field
+2. Enter invalid coupon code
+
+**Expected Result:**
+- Coupon rejected
+
+**Actual Results**
+- Checkout is not successful
+- Coupon details not available
+
+**Post-conditions:**
+- Coupon field required
+
+**Evidence Path:** 
+tests/evidence/Reject_invalid_coupon.png
+
 ---
 
 ### TC-PAYMENT-001: Initialize Paystack Payment
@@ -560,3 +607,31 @@ tests/evidence/Cart_persists_across_refresh_3.png
 
 ---
 
+### TC-ORDER-001: User order history and details not accessible
+**Priority:** P2  
+**Pre-conditions:**
+- Cart with items
+- Form filled correctly
+
+**Steps:**
+1. Run the app
+2. Select a book
+3. Go to cart
+4. Go to checkout
+5. Fill the checkout form
+6. Review the order placed
+7. Make payment
+
+**Expected Result:**
+- Successful checkout
+- User can access the order history
+
+**Actual Results**
+- Checkout is not successful
+- Order history and details not accessible
+
+**Post-conditions:**
+- Availability of the 'paystack_key' would enable the user to checkout and view the order history and details.
+
+**Evidence Path:** 
+tests/evidence/Order history and details.png
