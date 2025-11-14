@@ -833,3 +833,458 @@ ID: TC-NF-008
 - Order confirmed
 
 **Evidence:**  tests/evidence/checkout_performance.png
+
+---
+
+
+## Step-by-step Run Sheets
+
+Instructions: follow the numbered steps exactly, record Actual Result and Evidence (screenshot or console output). Each run sheet references the canonical test or FR code where applicable.
+
+### TC-RS-001: Search exact title (based on TC-CAT-001)
+Priority: P1
+Pre-conditions: App open on Catalog page; books loaded
+Steps:
+1. Locate the search input at the top of the Catalog page.
+2. Type the full, exact book title (example: To Kill a Mockingbird).
+3. Press Enter or click the search icon.
+4. Inspect the results list and count visible items.
+Expected Result:
+- At least one result contains the exact title.
+Evidence: screenshot of the search input and results.
+
+---
+
+### TC-RS-002: Search by partial title/author (based on TC-CAT-002/003)
+Priority: P1
+Pre-conditions: Catalog page open
+Steps:
+1. Type a partial string found in titles or authors (example: "Geo").
+2. Press Enter.
+3. Verify that results include items where the partial string appears in title or author.
+4. Repeat with a different partial string to confirm consistency.
+Expected Result:
+- Results show books matching the partial term in title or author.
+Evidence: screenshot showing the search term and matches.
+
+---
+
+### TC-RS-003: Trimmed and case-insensitive search (based on TC-CAT-005)
+Priority: P2
+Pre-conditions: Catalog open
+Steps:
+1. Type the title with extra spaces and mixed case (example: "  To KILL a mockingbird  ").
+2. Press Enter.
+3. Verify the correct book appears in results.
+Expected Result:
+- Search ignores extra whitespace and case, returning the expected book(s).
+Evidence: screenshot of query and results.
+
+---
+
+### TC-RS-004: Clear search returns full list (based on TC-CAT-004)
+Priority: P1
+Pre-conditions: A previous search has been executed
+Steps:
+1. Clear the search input (delete all text).
+2. Press Enter or click search-clear if available.
+3. Observe the Catalog list.
+Expected Result:
+- The full catalog list is displayed with no filters applied.
+Evidence: screenshot of full catalog list.
+
+---
+
+### TC-RS-005: Book details content check (based on FR-02)
+Priority: P1
+Pre-conditions: Catalog open; books available
+Steps:
+1. Click a book card to open its details page.
+2. Confirm there are at least one image and that images have alt text.
+3. Look for stock or ETA information on the page.
+4. Verify title, author, price, and description are visible.
+Expected Result:
+- Images, alt text, stock/ETA, and metadata are present and readable.
+Evidence: screenshot of book details.
+
+---
+
+### TC-RS-006: Add book to cart and verify (based on TC-CART-001)
+Priority: P1
+Pre-conditions: Catalog open; book in stock
+Steps:
+1. On a book card, click "Buy Now" or "Add to Cart".
+2. Observe cart icon/badge for immediate increment.
+3. Click the cart icon and open the Cart page.
+4. Confirm the added book appears with quantity = 1 and correct price.
+Expected Result:
+- Book present in cart, badge incremented, total updated.
+Evidence: screenshot of cart page showing item and totals.
+
+---
+
+### TC-RS-007: Add two different books (based on TC-CART-002)
+Priority: P1
+Pre-conditions: Catalog open
+Steps:
+1. Add Book A to cart.
+2. Add Book B to cart.
+3. Open Cart page.
+4. Confirm both books are present as separate line items with qty=1 each.
+5. Verify cart subtotal equals sum of both prices.
+Expected Result:
+- Two separate lines present and totals correct.
+Evidence: screenshot of cart with both items.
+
+---
+
+### TC-RS-008: Change quantity and verify totals (based on TC-CART-003)
+Priority: P1
+Pre-conditions: Cart contains an item
+Steps:
+1. On the Cart page, find the quantity control for an item.
+2. Set quantity to 3 and save/confirm as required.
+3. Observe the line subtotal and the cart total.
+4. Calculate expected subtotal (price × 3) and compare.
+Expected Result:
+- Line subtotal and overall totals reflect the new quantity and show two decimal places.
+Evidence: screenshot and quick calc note.
+
+---
+
+### TC-RS-009: Remove item from cart (based on TC-CART-004)
+Priority: P1
+Pre-conditions: Cart has 2+ items
+Steps:
+1. On the Cart page, click the Remove/Delete action for the first item.
+2. Confirm any prompt if shown.
+3. Verify the item is removed and the cart badge decremented.
+4. Verify totals updated accordingly.
+Expected Result:
+- Item removed and totals/badge updated.
+Evidence: screenshot before and after removal.
+
+---
+
+### TC-RS-010: Cart persistence across refresh (based on TC-CART-005 / TC-NF-007)
+Priority: P1
+Pre-conditions: Cart contains at least one item
+Steps:
+1. Open the Cart page and note items and totals.
+2. Press the browser refresh (F5) or reload the page.
+3. After reload, open the Cart page if necessary and compare items/totals.
+Expected Result:
+- Cart items and quantities remain unchanged (persisted in localStorage).
+Evidence: screenshot after refresh showing same cart contents.
+
+---
+
+### TC-RS-011: Empty cart message (based on TC-CART-006)
+Priority: P2
+Pre-conditions: Cart empty
+Steps:
+1. Ensure no items are in the cart.
+2. Open the Cart page.
+3. Observe the page content and look for the empty cart message.
+Expected Result:
+- Message "Your cart is empty. Continue shopping" is displayed and checkout controls are hidden or disabled.
+Evidence: screenshot of empty cart message.
+
+---
+
+### TC-RS-012: Apply valid coupon (based on TC-CHECKOUT-007)
+Priority: P2
+Pre-conditions: Cart with items; a valid coupon code available
+Steps:
+1. On the Cart or Checkout page, locate the coupon input.
+2. Enter a valid coupon code and click Apply.
+3. Observe the discount line and new totals.
+4. Verify the discount amount matches the coupon definition.
+Expected Result:
+- Discount applied and totals updated; coupon code shown in summary.
+Evidence: screenshot showing coupon code and updated totals.
+
+---
+
+### TC-RS-013: Reject invalid/expired coupon (based on TC-CART-008)
+Priority: P2
+Pre-conditions: Cart with items
+Steps:
+1. Enter an invalid or expired coupon code.
+2. Click Apply.
+3. Observe the UI message and ensure totals have not changed.
+Expected Result:
+- Clear error message and totals unchanged.
+Evidence: screenshot of error message.
+
+---
+
+### TC-RS-014: Coupon combinability/min-basket check
+Priority: P2
+Pre-conditions: Cart with items; two coupon codes (one non-combinable)
+Steps:
+1. Apply the non-combinable coupon and note totals.
+2. Attempt to apply the second coupon.
+3. Observe whether the second coupon is rejected and the message shown.
+4. Adjust cart total to below min-basket and attempt to apply coupon that requires min-basket.
+Expected Result:
+- Non-combinable coupon blocks additional ones; min-basket enforced.
+Evidence: screenshots for both attempts.
+
+---
+
+### TC-RS-015: Enter shipping information (based on TC-CHECKOUT-001)
+Priority: P1
+Pre-conditions: Cart with items
+Steps:
+1. Click "Proceed to Checkout".
+2. Fill Full Name, Email, Address, City, Country, Postal Code with valid data.
+3. Click Next.
+4. Observe navigation to Review step.
+Expected Result:
+- Form validated and navigation proceeds to Review step with data stored.
+Evidence: screenshot of Review step showing shipping summary.
+
+---
+
+### TC-RS-016: Shipping email validation (based on TC-CHECKOUT-002)
+Priority: P1
+Pre-conditions: Checkout Shipping step
+Steps:
+1. Leave Email field blank or type invalid email ("notanemail").
+2. Click Next.
+3. Observe validation messages and whether navigation occurs.
+Expected Result:
+- Error message for email; navigation blocked until corrected.
+Evidence: screenshot of validation message.
+
+---
+
+### TC-RS-017: Require all shipping fields (based on TC-CHECKOUT-003)
+Priority: P1
+Pre-conditions: Checkout Shipping step
+Steps:
+1. Leave Full Name empty and fill other fields.
+2. Click Next.
+3. Observe the focused field and error shown.
+Expected Result:
+- Full Name flagged as required and navigation blocked.
+Evidence: screenshot showing required error.
+
+---
+
+### TC-RS-018: Back button preserves data (based on TC-CHECKOUT-005)
+Priority: P1
+Pre-conditions: On Review step with shipping data entered
+Steps:
+1. Click Back to return to Shipping step.
+2. Check each field contains the previously entered value.
+3. Edit a field and navigate forward again.
+Expected Result:
+- Data preserved when navigating back and forth.
+Evidence: screenshots of Shipping step before and after.
+
+---
+
+### TC-RS-019: Review totals verification (based on TC-CHECKOUT-004)
+Priority: P1
+Pre-conditions: Shipping step complete
+Steps:
+1. On Review step, list items and line subtotals.
+2. Verify displayed subtotal equals sum of line items.
+3. Verify shipping fee present and tax = 8% of subtotal is shown.
+4. Verify final total calculation (subtotal + shipping + tax - discounts).
+Expected Result:
+- Numeric values match calculation and are formatted to 2 decimal places.
+Evidence: screenshot and small hand calculation.
+
+---
+
+### TC-RS-020: Open payment modal (based on TC-PAYMENT-001)
+Priority: P1
+Pre-conditions: Review step complete; Paystack configured
+Steps:
+1. On Review or Payment step, click Pay Now.
+2. Wait for Paystack modal/iframe to appear.
+3. Confirm the amount and currency shown match the app's totals.
+Expected Result:
+- Paystack modal appears with correct amount and currency.
+Evidence: screenshot of the modal showing the amount.
+
+---
+
+### TC-RS-021: Currency validation before payment (based on TC-PAYMENT-002)
+Priority: P1
+Pre-conditions: Review step complete
+Steps:
+1. Configure or simulate an unsupported currency in the app (or use test env where currency is unsupported).
+2. Click Pay Now.
+3. Observe any preflight error message preventing transaction start.
+Expected Result:
+- Clear preflight error indicating unsupported currency and payment blocked.
+Evidence: screenshot of error message.
+
+---
+
+### TC-RS-022: Cancel payment and verify pending state (based on TC-PAYMENT-001)
+Priority: P2
+Pre-conditions: Paystack modal opened
+Steps:
+1. Open Paystack modal as in TC-RS-020.
+2. Close the modal or cancel within the modal.
+3. Return to the app and check order state (if order record was created).
+Expected Result:
+- Order remains Pending (no Paid state) and retry option present.
+Evidence: screenshot of order list or pending status.
+
+---
+
+### TC-RS-023: Order appears in history after payment (based on TC-ORDER-001)
+Priority: P2
+Pre-conditions: Successful payment simulated
+Steps:
+1. Complete the payment process in test mode (simulate success).
+2. Navigate to Orders/Order History page.
+3. Locate the newest order and open its details.
+4. Verify status = Paid and gatewayRef is visible.
+Expected Result:
+- Order present with status Paid and reference.
+Evidence: screenshot of order details.
+
+---
+
+### TC-RS-024: Export orders CSV (based on Orders CSV acceptance)
+Priority: P3
+Pre-conditions: Orders exist
+Steps:
+1. Go to Orders page and click Export CSV.
+2. Download the file and open in a spreadsheet application (Excel/Sheets).
+3. Verify columns, header row, and decimal formatting (dot as decimal separator).
+Expected Result:
+- CSV opens correctly with expected columns and numeric formats.
+Evidence: screenshot of spreadsheet with the CSV loaded.
+
+---
+
+### TC-RS-025: Request return within 7 days (based on FR-R01)
+Priority: P3
+Pre-conditions: Delivered order within 7 days
+Steps:
+1. On Order details, click Request Return.
+2. Fill return reason and submit.
+3. Verify the return request is accepted and an audit entry recorded.
+Expected Result:
+- Return accepted and audit entry visible in order history.
+Evidence: screenshot showing return request and audit.
+
+---
+
+### TC-RS-026: Add review as purchaser and block non-purchaser (based on FR-U01)
+Priority: P2
+Pre-conditions: User has (or has not) purchased the book
+Steps:
+1. As a purchaser, navigate to book page and submit a review.
+2. Verify the review appears.
+3. As a non-purchaser, attempt to submit a review and note the response.
+Expected Result:
+- Purchaser can post; non-purchaser is blocked with message.
+Evidence: screenshots of both attempts.
+
+---
+
+### TC-RS-027: Block unsafe markdown links (based on FR-U03)
+Priority: P2
+Pre-conditions: Review input accepts markdown
+Steps:
+1. Enter a review containing a link with scheme `javascript:`.
+2. Submit the review.
+3. Observe whether input is sanitized and whether the link is blocked.
+Expected Result:
+- JavaScript links blocked/sanitized and no scripts executed.
+Evidence: screenshot of stored review or console showing sanitized output.
+
+---
+
+### TC-RS-028: Report review flows to admin queue (based on FR-U02)
+Priority: P2
+Pre-conditions: At least one review exists
+Steps:
+1. On a review, click Report/Flag.
+2. As admin, open the moderation queue and confirm the flagged review appears.
+Expected Result:
+- Flagged review shows in admin moderation queue.
+Evidence: screenshot of admin moderation queue.
+
+---
+
+### TC-RS-029: Admin access control and a simple CRUD check (based on FR-M01/M02)
+Priority: P1
+Pre-conditions: Two accounts exist (admin and non-admin)
+Steps:
+1. Log in as non-admin and navigate to /admin.
+2. Verify access blocked or unauthorized message.
+3. Log in as admin, go to admin Catalog, create a new book with minimal data, save it.
+4. Verify book appears in catalog and details page.
+Expected Result:
+- Non-admin blocked; admin can create and the new book is visible.
+Evidence: screenshots of unauthorized message and the new book entry.
+
+---
+
+### TC-RS-030: Notifications mark-all-read and badge (based on FR-N01/N02)
+Priority: P2
+Pre-conditions: Notifications exist
+Steps:
+1. Open notifications panel and note unread badge count.
+2. Click Mark All Read.
+3. Observe badge count and notification states.
+Expected Result:
+- Badge updates to 0 and notifications show read (note intentional defect may keep badge stale).
+Evidence: screenshot before and after mark-all-read.
+
+---
+
+### TC-RS-031: Accessibility quick run (WCAG basics)
+Priority: P2
+Pre-conditions: Any page open
+Steps:
+1. Use the Tab key to navigate interactive elements on the page.
+2. Ensure focus order is logical and visible.
+3. Inspect form elements to confirm label association.
+4. Run a Lighthouse or aXe quick scan (if available) and record top-level issues.
+Expected Result:
+- Focus order logical; labels present; no critical a11y violations.
+Evidence: short log of observations and scan summary.
+
+---
+
+### TC-RS-032: Performance smoke test
+Priority: P2
+Pre-conditions: App running in test environment
+Steps:
+1. Open the Catalog page in a desktop browser.
+2. Use browser devtools to measure LCP and TTI or note approximate load time.
+3. Verify images are lazy-loaded (inspect image attributes).
+Expected Result:
+- Reasonable load times and images show lazy-loading attributes.
+Evidence: screenshot of devtools network/timing and image attribute.
+
+---
+
+### TC-RS-033: Cross-browser smoke test
+Priority: P2
+Pre-conditions: Modern browsers available (Chrome, Firefox, Edge)
+Steps:
+1. Open the app in each browser.
+2. Run a simple scenario: open Catalog → add a book → open Cart → proceed to Checkout.
+3. Note any visible errors or deviations.
+Expected Result:
+- No major functional regressions across tested browsers.
+Evidence: short log of results per browser and screenshots of any issues.
+
+---
+
+Notes:
+- For each run sheet, capture Actual Result, Pass/Fail, and Evidence path.
+- If a test depends on configuration (Paystack key, coupons), run in a test environment or mock/stub the dependency.
+- I can convert these run sheets into printable test-run sheets (PDF) or a CSV/Excel test matrix if you want.
