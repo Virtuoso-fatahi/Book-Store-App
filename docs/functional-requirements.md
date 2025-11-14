@@ -2,13 +2,13 @@
 
 This specification is explicit and test‑ready. It defines observable behaviors, data and UI contracts, acceptance criteria, and scenario checklists.
 
-## 👤 Users & Roles
+## 👤 Users & Roles FR1
 - Guest (default) — can browse, search, add to cart, checkout
 - Admin — access `/admin` pages (guarded by `user.role === 'admin'` in localStorage)
 
 ---
 
-## 🔎 Catalog & Discovery
+## 🔎 Catalog & Discovery FR-02 (01--04) 
 Browse titles, search, filter, and sort.
 
 ### User Stories
@@ -34,7 +34,7 @@ Browse titles, search, filter, and sort.
 
 ---
 
-## 🛒 Cart & Checkout
+## 🛒 Cart & Checkout FR-03(01-03)
 Add to cart, adjust quantities, apply coupons, and complete a 4‑step checkout.
 
 ### User Stories
@@ -50,7 +50,7 @@ Add to cart, adjust quantities, apply coupons, and complete a 4‑step checkout.
 ### ✅ Acceptance Criteria
 - Quantities cannot exceed stock; persist across refresh.
 - Subtotal = sum(price × qty). Shipping fee displayed. Tax = 8% of subtotal. Totals are 2 dp.
-- Rounding rule: line items round to 2 dp; tax rounds once on grand total; small variances (±0.01) may occur by design.
+- Rounding rule: line items round to 2 dp; tax rounds once on grand total; small variances (±0.01) may occur by  design.
 - Coupons: reject expired; enforce min basket; block non‑combinable mixes; reflect discount in totals.
 - Form validation: required fields; valid email; errors linked to inputs and announced (aria‑live polite).
 - Navigation: Back/Next preserve user input; Next disabled when cart is empty.

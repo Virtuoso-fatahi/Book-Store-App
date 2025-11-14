@@ -78,6 +78,7 @@
 **Severity:** Minor
 **Priority:** Medium  
 **Environment:** Google chrome, Windows 11   
+**Test-Case ID:** TC-CAT-005
 
 **Steps to Reproduce:**
 1. Go to the Catalog page  
@@ -103,7 +104,8 @@ No books are shown when spaces are present around the search query.
 **Summary:**  Added individual book quantity on cart is endless
 **Severity:** Medium
 **Priority:** High  
-**Environment:** Firefox, Pop OS  
+**Environment:** Firefox, Pop OS 
+**Test-Case ID:** 
 
 **Steps to Reproduce:**
 1. Go to the Cart page  
@@ -130,6 +132,7 @@ Cart quantity is not limited to database quatity
 **Severity:** Critical
 **Priority:** High  
 **Environment:** Chrome, Windows 11  
+**Test-Case ID:** TC-PAYMENT-001
 
 **Steps to Reproduce:**
 1. Go to the Cart page
@@ -160,7 +163,8 @@ Cart quantity is not limited to database quatity
 **Summary:**  Unsupported Currency Validation
 **Severity:** High
 **Priority:** High  
-**Environment:** Chrome, Windows 11  
+**Environment:** Chrome, Windows 11
+**Test Case ID:** TC-PAYMENT-002 
 
 **Steps to Reproduce:**
 1. Go to the Cart page
@@ -185,4 +189,4 @@ Cart quantity is not limited to database quatity
 
 **Notes:**  
 - The app lacks paystack integration. 
-- The fix may involve creating a paystack key to initialize payment.  
+- The fix may involve creating a paystack key to initialize payment.

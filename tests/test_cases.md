@@ -1,6 +1,7 @@
 ✅ Test Case 
 
 ### TC-CAT-001: Search Books by Title
+FR Code: FR-02 (Search, Filter and Sort)
 *Priority:* P1  
 *Pre-conditions:*
 - The app is open on the Catalog page
@@ -32,6 +33,7 @@
 ---
 
 ### TC-CAT-002: Search by Author Name
+FR Code: FR-02 (Search, Filter and Sort)
 *Priority:* P1  
 *Pre-conditions:*
 - App is open on the Catalog page
@@ -62,6 +64,7 @@
 ---
 
 ### TC-CAT-003: Search by Description
+FR Code: FR-02 (Search, Filter and Sort)
 *Priority:* P2  
 *Pre-conditions:*
 - catalog page is open 
@@ -90,6 +93,7 @@
 ---
 
 ### TC-CAT-004: Empty Search Query Returns Full List
+FR Code: FR-02 (Search, Filter and Sort)
 *Priority:* P1  
 *Pre-conditions:*
 - App is open on the Catalog page
@@ -117,7 +121,8 @@
 
 ---
 
-### TC-CAT-005: Search with Whitespace Trim  
+### TC-CAT-005: Search with Whitespace Trim 
+FR Code: FR-02 (Search, Filter and Sort) 
 *Priority:* P2  
 *Pre-conditions:*
 - Catalog page is open
@@ -141,7 +146,8 @@
 
 ------
 
-### TC-CART-001: Add Book to Cart  
+### TC-CART-001: Add Book to Cart 
+FR Code: FR-03 (Search, Filter and Sort) 
 *Priority:* P1  
 *Pre-conditions:*
 - App loaded on Catalog page
