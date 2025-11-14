@@ -635,3 +635,195 @@ tests/evidence/Reject_invalid_coupon.png
 
 **Evidence Path:** 
 tests/evidence/Order history and details.png
+
+
+### TC-NF-001 – Concurrent Users Handling
+
+- ID: TC-NF-001
+- Title: Verify app handles 1000 concurrent users
+ **Pre-conditions:**
+- Load testing tool configured
+
+**Steps:**
+- Simulate 1000 users accessing the app simultaneously
+- Monitor system performance
+
+**Expected Result:**
+- App remains responsive; no crashes
+
+**Actual Results**
+ - App handled 1000 users with minor delay 
+
+**Post-conditions:**
+- None
+
+
+
+
+
+### TC-NF-002 – Add Multiple Books to Cart
+
+ID: TC-NF-002
+
+Title: Verify cart handles multiple book additions
+
+ **Pre-conditions:**
+ - User is logged in; at least 50 books exist in catalog
+
+**Steps:**
+- Add 50 books consecutively to the cart
+- Observe cart update speed
+
+**Expected Result:**
+-  Cart updates instantly; no lag
+
+**Actual Result:**
+- Cart updated with all 54 books 
+
+**Post-conditions:**
+- Cart contains 50 books
+
+**Evidence:** 
+tests/evidence/book_additions.png
+
+
+### TC-NF-003 – Button and Link Usability
+
+ID: TC-NF-003
+
+**Title:** Verify buttons and links are clearly labeled
+
+**Pre-conditions:**
+- User is on any page of the app
+
+**Steps:**
+- Check all buttons and links
+- Ensure labels are clear and understandable
+
+**Expected Result:**
+- All controls are intuitive
+
+**Actual Result:**
+- All buttons and links were clearly labeled 
+
+**Post-conditions:**
+ None
+
+**Evidence:** 
+tests/evidence/pay button.png
+
+
+### TC-NF-004 – Navigation Usability
+
+ID: TC-NF-004
+
+**Title:** Verify smooth navigation between pages
+
+**Pre-conditions:**
+- User is logged in
+
+**Steps:**
+- Navigate: Homepage → Book Details → Cart → Checkout
+- Expected Result: Navigation is smooth and error-free
+
+**Actual Result:**
+- Navigation smooth; no errors 
+
+**Post-conditions:**
+ None
+
+
+### TC-NF-005 – Error Message Usability
+
+ID: TC-NF-005
+
+**Title:** Verify helpful error messages appear for invalid input
+
+**Pre-conditions:**
+- User is on a form input page
+
+**Steps:**
+- Enter invalid data (e.g., letters in phone field)
+- Submit the form
+
+**Expected Result:**
+- Clear and friendly error message appears
+
+**Actual Result:**
+- Correct error message displayed 
+
+**Post-conditions:** 
+None
+
+**Evidence:** tests/evidence/error_message.png
+
+### C-NF-006 – Browser Compatibility
+
+ID: TC-NF-006
+
+**Title:** Verify app works on Chrome, Firefox, Safari, Edge
+
+**Pre-conditions:**
+- Browsers installed
+
+**Steps:**
+- Open app in each browser
+- Navigate main pages
+
+**Expected Result:**
+- App functions correctly on all browsers
+
+**Actual Result:**
+- App works on all tested browsers 
+
+**Post-conditions:** 
+- None
+
+**Evidence:** tests/evidence/browser_compatibility.png
+
+
+### TC-NF-007 – Cart Data Preservation
+
+ID: TC-NF-007
+
+**Title:** Verify cart data remains after page refresh
+
+**Pre-conditions:**
+- User has items in cart
+
+**Steps:**
+- Refresh the page during checkout
+- Expected Result: Cart items remain intact
+
+**Actual Result:** 
+- Cart preserved successfully 
+
+**Post-conditions:**
+- Cart still contains items
+
+**Evidence:** tests/evidence/cart_preserved.png
+
+
+### TC-NF-008 – Checkout Performance
+
+ID: TC-NF-008
+
+**Title:** Verify checkout completes 
+
+**Pre-conditions:**
+- User logged in; cart contains books
+
+**Steps:**
+- Proceed to checkout
+- Complete payment process
+
+**Expected Result:**
+- Checkout completes 
+
+**Actual Result:**
+- Checkout is not completed 
+
+**Post-conditions:**
+- Order confirmed
+
+**Evidence:**  tests/evidence/checkout_performance.png
