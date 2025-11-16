@@ -787,7 +787,8 @@ tests/evidence/Order history and details.png
 
 ### (Admin/Orders) TC-ADMIN-003: Order lifecycle transitions (Pending → Paid → Fulfilled → Delivered)
 *Priority:* P1
-*Pre-conditions:* Order created and payment successful (simulated)
+*Pre-conditions:* 
+Order created and payment successful (simulated)
 *Steps:*
 1. After payment success, verify order status = Paid
 2. As admin, mark order Fulfilled
