@@ -144,7 +144,53 @@ FR Code: FR-02 (Search, Filter and Sort)
 
 *Evidence Path:* tests/evidence/tc5.png
 
-------
+### TC-CAT-006 : search by genre
+FR Code: FR-02 (Search, Filter and Sort)
+*priority:*P2
+*Pre-conditions:*
+- Catalog contains multiple genres (Romance, Science fiction).
+
+*Steps:*
+- Run the app
+- Go to the search bar
+- Type the genre e.g "science fiction".
+
+*Expected Result:*
+- Only science fiction books displayed; 
+- if none, an empty-state message shows which filter produced zero results.
+
+*Actual Result:*
+- books according to the genre are produced based on full or partial description,author name and title
+
+*Post-conditions:* 
+- Genre filter active.
+
+
+*Evidence path:* tests/evidence/genre.png
+
+###  TC-CAT-007: Search handles diacritics
+FR Code: FR-02 (Search, Filter and Sort)
+*Priority:* P2
+*Pre-conditions:* 
+- Catalog contains titles with diacritics e.g.,pride and prejudicé
+
+*Steps:*
+- Run the app
+- Search for the title using and without diacritics ("pride and prejudice" and "pride and prejudicé").
+- Compare results.
+
+*Expected Result:*
+-diacritics-insensitive search returns both. Note: Current known limitation may fail — record behaviour.
+
+*Actual results*
+- no books are shown when diacritics are used
+
+*Post-conditions:*
+- Diactritics are not supported
+
+*Evidence Path:* tests/evidence/diacritics.png
+
+---
 
 ### TC-CART-001: Add Book to Cart 
 FR Code: FR-03 (Search, Filter and Sort) 
@@ -335,7 +381,31 @@ tests/evidence/Cart_persists_across_refresh_3.png
 
 *Evidence Path:* tests/evidence/calculates_subtotal_correctly.png
 
----------
+
+### TC-CART-008: Reject Invalid Coupon
+*Priority:* P2  
+*Pre-conditions:*
+- Cart with items
+- Valid coupon code
+
+*Steps:*
+1. Locate coupon input field
+2. Enter invalid coupon code
+
+*Expected Result:*
+- Coupon rejected
+
+*Actual Results
+- Checkout is not successful
+- Coupon details not available
+
+*Post-conditions:*
+- Coupon field required
+
+*Evidence Path:* 
+tests/evidence/Reject_invalid_coupon.png
+
+---
 
 ### TC-CHECKOUT-001: Enter Shipping Information
 **Priority:** P1  
@@ -344,11 +414,11 @@ tests/evidence/Cart_persists_across_refresh_3.png
 - Checkout button accessible
 
 **Steps:**
-1. Click "Proceed to Checkout"
-2. Navigate to Shipping step (step 1 of 4)
-3. Fill form: Full Name, Email, Address, City, Country, Postal Code
-4. Click "Next" to proceed
-5. Verify data preserved on next step
+- Click "Proceed to Checkout"
+- Navigate to Shipping step (step 1 of 4)-
+- Fill form: Full Name, Email, Address, City, Country, Postal Code
+- Click "Next" to proceed
+- Verify data preserved on next step
 
 **Expected Result:**
 - Shipping form displays all required fields
@@ -386,8 +456,8 @@ tests/evidence/Cart_persists_across_refresh_3.png
 - Next button disabled
 - Form data not cleared
 
-**Actual Result**
-- Error message: "please fill out this field" when input is empty
+**Actual Result
+-** Error message: "please fill out this field" when input is empty
 - next button not disabled when email is empty
 - form only show error message when the "@" sign is missing
 
@@ -472,8 +542,8 @@ tests/evidence/Cart_persists_across_refresh_3.png
 - Form fields populated with previous input
 - No data loss
 
-**Actual Result**
--- form data preserve on clicking the back button
+**Actual Result
+--** form data preserve on clicking the back button
 
 **Post-conditions:**
 - Can edit shipping if needed
@@ -504,6 +574,7 @@ tests/evidence/Cart_persists_across_refresh_3.png
 
 **Evidence Path:** `tests/evidence/cart-fatahi-7.png`
 
+
 ### TC-CHECKOUT-007: Apply Valid Coupon
 **Priority:** P2  
 **Pre-conditions:**
@@ -527,29 +598,59 @@ tests/evidence/Cart_persists_across_refresh_3.png
 **Evidence Path:** 
 tests/evidence/Apply_valid_coupon.png
 
+---
 
-### TC-CART-008: Reject Invalid Coupon
-**Priority:** P2  
-**Pre-conditions:**
-- Cart with items
-- Valid coupon code
+### TC-CHECKOUT-008: Modal accessibility — focus return and aria-modal
+**Priority:** P1
+**Pre-conditions:** 
+- Any modal (e.g., Paystack or promo modal) opens from a button
 
-**Steps:**
-1. Locate coupon input field
-2. Enter invalid coupon code
+*Steps:*
+- Focus a button that opens a modal
+- Open the modal
+- Tab through modal controls and then close it
+- Observe whether focus returns to the originating button and aria-modal/role present
 
-**Expected Result:**
-- Coupon rejected
+*Expected Result:*
+- Modal traps focus while open 
+- aria-modal present
+- focus returns to the trigger when closed
 
-**Actual Results**
-- Checkout is not successful
-- Coupon details not available
+*Actual Results:*
+- Modal traps focus while open 
+- focus returns to the trigger when closed
 
-**Post-conditions:**
-- Coupon field required
+*Post-conditions:*
+- No focus lost
+- keyboard navigation stable
 
-**Evidence Path:** 
-tests/evidence/Reject_invalid_coupon.png
+*Evidence Path:* tests/evidence/modal_a11y.png
+
+---
+
+### TC-CHECKOUT-009: Rounding variance check (line items vs grand total)
+*Priority:* P2
+*Pre-conditions:* 
+- Cart with multiple items producing rounding edge cases (e.g., prices producing fractional cents when multiplied)
+
+*Steps:*
+- Add items chosen to illustrate rounding (e.g., 0.3333 prices) to the cart
+- Compute expected line rounding and grand total per spec (tax rounding once on grand total)
+- Compare app-displayed values with expected
+
+*Expected Result:*
+- Line items round to 2 dp
+- tax rounded once on grand total 
+- acceptable variance ±0.01 only
+
+*Actual results:*
+- Line items round to 2 dp
+- tax not rounded once on grand total 
+
+*Post-conditions:*
+- Totals documented
+
+*Evidence Path:* tests/evidence/rounding_variance.png
 
 ---
 
@@ -602,8 +703,8 @@ tests/evidence/Reject_invalid_coupon.png
 - No preflight error
 - Payment proceeds
 
-**Actual Result**
-- Payment function not accessible
+**Actual Result
+-** Payment function not accessible
 - Error message: "We could not start this transaction" is displayed
 
 **Post-conditions:**
@@ -613,20 +714,20 @@ tests/evidence/Reject_invalid_coupon.png
 
 ---
 
-### TC-ORDER-001: User order history and details not accessible
+### TC-ORDER-001: Check User order history and details
 **Priority:** P2  
 **Pre-conditions:**
 - Cart with items
 - Form filled correctly
 
 **Steps:**
-1. Run the app
-2. Select a book
-3. Go to cart
-4. Go to checkout
-5. Fill the checkout form
-6. Review the order placed
-7. Make payment
+- Run the app
+- Select a book
+- Go to cart
+- Go to checkout
+- Fill the checkout form
+- Review the order placed
+- Make payment
 
 **Expected Result:**
 - Successful checkout
@@ -642,6 +743,99 @@ tests/evidence/Reject_invalid_coupon.png
 **Evidence Path:** 
 tests/evidence/Order history and details.png
 
+---
+
+### TC-ADMIN-001: One review per purchaser; edit & delete (FR-U01)
+*Priority:* P2
+*Pre-conditions:* 
+- User has purchased Book A and is logged in
+
+*Steps:*
+1. Submit a review for Book A
+2. Attempt to submit a second review for Book A
+3. Edit the existing review and save changes
+4. Delete the review and confirm
+
+*Expected Result:*
+- Second submission blocked; user can edit then delete their review; audit/log recorded if applicable
+
+*Actual Results:*
+
+*Post-conditions:*
+- Only one review from the user exists for the book until deleted
+
+*Evidence Path:* tests/evidence/review_one_per_user.png
+
+---
+
+### TC-ADMIN-002: Moderation flow — report → admin queue → action (FR-U02/FR-M04)
+*Priority:* P2
+*Pre-conditions:* 
+- Public review exists; admin account available
+
+*Steps:*
+1. As a user, report a review
+2. As admin, open moderation queue and locate the report
+3. Approve or remove the review and add a moderation note
+*Expected Result:*
+- Report appears in admin queue; admin action (remove/keep) recorded with note in audit
+*Post-conditions:*
+- Moderation audit visible
+*Evidence Path:* tests/evidence/moderation_flow.png
+
+---
+
+### (Admin/Orders) TC-ADMIN-003: Order lifecycle transitions (Pending → Paid → Fulfilled → Delivered)
+*Priority:* P1
+*Pre-conditions:* Order created and payment successful (simulated)
+*Steps:*
+1. After payment success, verify order status = Paid
+2. As admin, mark order Fulfilled
+3. Mark order Delivered
+4. Verify status timeline and timestamps
+*Expected Result:*
+- Status transitions follow the correct sequence with audit entries and timestamps
+*Post-conditions:*
+- Order timeline accurate
+*Evidence Path:* tests/evidence/order_lifecycle.png
+
+---
+
+### (Admin/Refunds) TC-ADMIN-004: Full and partial refunds (FR-R02)
+*Priority:* P2
+*Pre-conditions:* 
+- Delivered order exists and admin refund tool available
+*Steps:*
+- As admin, initiate a full refund for Order X and confirm
+- For Order Y, initiate a partial refund (select item(s) or amount)
+- Verify audit trail and order status changes
+
+*Expected Result:*
+- Refunds processed in simulation, order statuses updated (Refunded or Partial/Refunded), audit entries recorded
+
+*Post-conditions:*
+- Accounting fields reflect refunded amounts
+*Evidence Path:* tests/evidence/refund_full_partial.png
+
+---
+
+### (Admin/Import) TC-ADMIN-005: CSV import sanity (orders CSV import edge cases)
+*Priority:* P3
+*Pre-conditions:* Admin CSV import feature or data ingestion script available
+
+*Steps:
+- Create a CSV with missing columns, extra columns, and decimal comma formats
+- Attempt to import via admin tool
+- Observe validation errors and accepted rows
+
+*Expected Result:*
+- Import validates columns; rejects malformed rows with clear errors; documents accepted rows
+
+*Post-conditions:*
+- No broken data inserted
+*Evidence Path:* tests/evidence/csv_import.png
+
+---
 
 ### TC-NF-001 – Concurrent Users Handling
 
@@ -834,76 +1028,103 @@ ID: TC-NF-008
 
 **Evidence:**  tests/evidence/checkout_performance.png
 
----
+### ID: TC-NF-009:Validate Keyboard Navigation Accessibility
+FR Code(s): FR-X01
+*Pre-conditions:*
+- Browser open
+
+*Steps:*
+- Use TAB key to move across UI
+- Use SHIFT+TAB to move backward
+
+*Expected Result:*
+- Focus ring visible
+- All buttons/inputs reachable
+
+Actual Result:
+
+*Post-conditions:*
+- No changes to UI settings
 
 
-## Step-by-step Run Sheets
+Evidence
 
-Instructions: follow the numbered steps exactly, record Actual Result and Evidence (screenshot or console output). Each run sheet references the canonical test or FR code where applicable.
+### ID: TC-NF-010:Screen Reader Announces Form Errors               
+FR Code(s): FR-X01
+*Pre-conditions:*
+- Form with invalid input
 
-### TC-RS-001: Search exact title (based on TC-CAT-001)
-Priority: P1
-Pre-conditions: App open on Catalog page; books loaded
-Steps:
-1. Locate the search input at the top of the Catalog page.
-2. Type the full, exact book title (example: To Kill a Mockingbird).
-3. Press Enter or click the search icon.
-4. Inspect the results list and count visible items.
-Expected Result:
-- At least one result contains the exact title.
-Evidence: screenshot of the search input and results.
+*Steps:*
+- Submit empty form
+- Turn on screen reader
 
----
+*Expected Result:*
+- aria-live announces: “This field is required”
 
-### TC-RS-002: Search by partial title/author (based on TC-CAT-002/003)
-Priority: P1
-Pre-conditions: Catalog page open
-Steps:
-1. Type a partial string found in titles or authors (example: "Geo").
-2. Press Enter.
-3. Verify that results include items where the partial string appears in title or author.
-4. Repeat with a different partial string to confirm consistency.
-Expected Result:
-- Results show books matching the partial term in title or author.
-Evidence: screenshot showing the search term and matches.
+*Post-conditions:*
+- Screen reader returns to idle
 
----
+Actual Result:
+—
+Evidence:
 
-### TC-RS-003: Trimmed and case-insensitive search (based on TC-CAT-005)
-Priority: P2
-Pre-conditions: Catalog open
-Steps:
-1. Type the title with extra spaces and mixed case (example: "  To KILL a mockingbird  ").
-2. Press Enter.
-3. Verify the correct book appears in results.
-Expected Result:
-- Search ignores extra whitespace and case, returning the expected book(s).
-Evidence: screenshot of query and results.
+### ID: TC-NF-011:LCP (Largest Contentful Paint) Under 2.5s Desktop
+FR Code(s): FR-X02
+*Pre-conditions:*
+- Lighthouse or DevTools available
 
----
+*Steps:*
+- Run performance test
+- Record LCP time
 
-### TC-RS-004: Clear search returns full list (based on TC-CAT-004)
-Priority: P1
-Pre-conditions: A previous search has been executed
-Steps:
-1. Clear the search input (delete all text).
-2. Press Enter or click search-clear if available.
-3. Observe the Catalog list.
-Expected Result:
-- The full catalog list is displayed with no filters applied.
-Evidence: screenshot of full catalog list.
+*Expected Result:*
+- LCP ≤ 2.5 seconds
+
+*Post-conditions:*
+- Performance metrics stored in DevTools
+- Browser returns to idle state
+- No user data modified
+
+Actual Result:
+—
+Evidence:
+
+### ID: TC-NF-012:Lazy Loading of Images
+FR Code(s): FR-X02
+
+*Pre-conditions:*
+- Product list page
+
+*Steps:*
+- Inspect book card images
+- Check “loading=lazy”
+
+*Expected Result:*
+- All images load lazily
+ (Intentional defect may fail)
+
+*Post-conditions:*
+- Page fully loaded with stable layout
+
+Actual Result:
+—
+Evidence:
 
 ---
 
 ### TC-RS-005: Book details content check (based on FR-02)
 Priority: P1
-Pre-conditions: Catalog open; books available
-Steps:
-1. Click a book card to open its details page.
-2. Confirm there are at least one image and that images have alt text.
-3. Look for stock or ETA information on the page.
-4. Verify title, author, price, and description are visible.
-Expected Result:
+*Pre-conditions:*
+- Catalog open
+-  books available
+
+*Steps:*
+- Click a book card to open its details page.
+-  Confirm there are at least one image and that images have alt text.
+- Look for stock or ETA information on the page.
+- Verify title, author, price, and description are visible.
+
+*Expected Result:*
 - Images, alt text, stock/ETA, and metadata are present and readable.
 Evidence: screenshot of book details.
 
@@ -911,13 +1132,16 @@ Evidence: screenshot of book details.
 
 ### TC-RS-006: Add book to cart and verify (based on TC-CART-001)
 Priority: P1
-Pre-conditions: Catalog open; book in stock
+*Pre-conditions:* 
+- Catalog open
+- book in stock
 Steps:
-1. On a book card, click "Buy Now" or "Add to Cart".
-2. Observe cart icon/badge for immediate increment.
-3. Click the cart icon and open the Cart page.
-4. Confirm the added book appears with quantity = 1 and correct price.
-Expected Result:
+-  On a book card, click "Buy Now" or "Add to Cart".
+-  Observe cart icon/badge for immediate increment.
+-  Click the cart icon and open the Cart page.
+-  Confirm the added book appears with quantity = 1 and correct price.
+
+*Expected Result:*
 - Book present in cart, badge incremented, total updated.
 Evidence: screenshot of cart page showing item and totals.
 
@@ -925,14 +1149,15 @@ Evidence: screenshot of cart page showing item and totals.
 
 ### TC-RS-007: Add two different books (based on TC-CART-002)
 Priority: P1
-Pre-conditions: Catalog open
+*Pre-conditions:* Catalog open
 Steps:
-1. Add Book A to cart.
-2. Add Book B to cart.
-3. Open Cart page.
-4. Confirm both books are present as separate line items with qty=1 each.
-5. Verify cart subtotal equals sum of both prices.
-Expected Result:
+- Add Book A to cart.
+- Add Book B to cart.
+- Open Cart page.
+- Confirm both books are present as separate line items with qty=1 each.
+- Verify cart subtotal equals sum of both prices.
+
+*Expected Result:*
 - Two separate lines present and totals correct.
 Evidence: screenshot of cart with both items.
 
@@ -942,11 +1167,12 @@ Evidence: screenshot of cart with both items.
 Priority: P1
 Pre-conditions: Cart contains an item
 Steps:
-1. On the Cart page, find the quantity control for an item.
-2. Set quantity to 3 and save/confirm as required.
-3. Observe the line subtotal and the cart total.
-4. Calculate expected subtotal (price × 3) and compare.
-Expected Result:
+- On the Cart page, find the quantity control for an item.
+- Set quantity to 3 and save/confirm as required.
+- Observe the line subtotal and the cart total.
+- Calculate expected subtotal (price × 3) and compare.
+
+*Expected Result:*
 - Line subtotal and overall totals reflect the new quantity and show two decimal places.
 Evidence: screenshot and quick calc note.
 
@@ -954,13 +1180,15 @@ Evidence: screenshot and quick calc note.
 
 ### TC-RS-009: Remove item from cart (based on TC-CART-004)
 Priority: P1
-Pre-conditions: Cart has 2+ items
+*Pre-conditions:*
+- Cart has 2+ items
 Steps:
-1. On the Cart page, click the Remove/Delete action for the first item.
-2. Confirm any prompt if shown.
-3. Verify the item is removed and the cart badge decremented.
-4. Verify totals updated accordingly.
-Expected Result:
+- On the Cart page, click the Remove/Delete action for the first item.
+- Confirm any prompt if shown.
+- Verify the item is removed and the cart badge decremented.
+- Verify totals updated accordingly.
+
+*Expected Result:*
 - Item removed and totals/badge updated.
 Evidence: screenshot before and after removal.
 
@@ -968,12 +1196,15 @@ Evidence: screenshot before and after removal.
 
 ### TC-RS-010: Cart persistence across refresh (based on TC-CART-005 / TC-NF-007)
 Priority: P1
-Pre-conditions: Cart contains at least one item
-Steps:
-1. Open the Cart page and note items and totals.
-2. Press the browser refresh (F5) or reload the page.
-3. After reload, open the Cart page if necessary and compare items/totals.
-Expected Result:
+*Pre-conditions:*
+- Cart contains at least one item
+
+*Steps:*
+- Open the Cart page and note items and totals.
+- Press the browser refresh (F5) or reload the page.
+- After reload, open the Cart page if necessary and compare items/totals.
+
+*Expected Result:*
 - Cart items and quantities remain unchanged (persisted in localStorage).
 Evidence: screenshot after refresh showing same cart contents.
 
@@ -981,12 +1212,14 @@ Evidence: screenshot after refresh showing same cart contents.
 
 ### TC-RS-011: Empty cart message (based on TC-CART-006)
 Priority: P2
-Pre-conditions: Cart empty
-Steps:
-1. Ensure no items are in the cart.
-2. Open the Cart page.
-3. Observe the page content and look for the empty cart message.
-Expected Result:
+*Pre-conditions:* 
+- Cart empty
+*Steps:*
+- Ensure no items are in the cart.
+- Open the Cart page.
+- Observe the page content and look for the empty cart message.
+
+*Expected Result:*
 - Message "Your cart is empty. Continue shopping" is displayed and checkout controls are hidden or disabled.
 Evidence: screenshot of empty cart message.
 
@@ -1284,7 +1517,11 @@ Evidence: short log of results per browser and screenshots of any issues.
 
 ---
 
+
 Notes:
-- For each run sheet, capture Actual Result, Pass/Fail, and Evidence path.
-- If a test depends on configuration (Paystack key, coupons), run in a test environment or mock/stub the dependency.
-- I can convert these run sheets into printable test-run sheets (PDF) or a CSV/Excel test matrix if you want.
+- FR-O01..FR-O05 correspond to Cart/Checkout/Payment/Orders lifecycle outcomes in `functional-requirements.md`.
+- FR-S01..FR-S03 refer to Sanitization/URL scheme/storage issues in the FR document.
+- FR-X01..FR-X04 cover Accessibility, Performance, Compatibility and Security non-functional requirements.
+- If you want every run-sheet ID expanded with explicit FR codes, I can generate that full mapping next.
+
+
