@@ -1320,8 +1320,6 @@ tests/evidence/pay button.png
 **Post-conditions:**
 - Screen reader returns to idle
 
-Evidence:
-
 **Status:** Passed
 
 ---
@@ -1347,7 +1345,8 @@ Evidence:
 - Browser returns to idle state
 - No user data modified
 
-**Evidence:** tests/evidence/lcp.png
+**Evidence:**
+![LCP > 2.5 seconds](tests/evidence/lcp.png "Optional Title")
 
 **Status:** Failed
 
