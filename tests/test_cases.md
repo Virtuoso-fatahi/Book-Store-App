@@ -204,6 +204,99 @@ FR Code: FR-02 (Search, Filter and Sort)
 
 Status: Failed
 
+
+### TC-CAT-008 — Verify filter and sort options on Catalog
+**FR Code:** FR-02 (Search, Filter and Sort)
+**Priority:** P1
+**Pre-conditions:**
+- The app is running and the Catalog page is accessible
+- Book data is loaded in the catalog
+
+**Steps:**
+- Open the Catalog page
+- Check for visible Filter controls (e.g., genre, author, price range) and Sort control (e.g., price/title ascending/descending)
+- Select a filter (e.g., Author = "George Orwell") and apply
+- Select a sort option (e.g., Price: Low → High)
+- Observe the displayed list of books
+
+**Expected Result:**
+- Filter controls are present and usable
+- Sort control is present and reorders results correctly
+- Applying a filter limits results to matching books
+- Applying a sort orders the results as selected
+
+**Actual Result:**
+-  No filter or sort option in catalog page 
+
+**Post-conditions:**
+- Catalog shows filtered and/or sorted list according to selections
+
+**Evidence Path:** `tests/evidence/tc5.png`
+
+**Status:** fail
+
+
+### TC-CAT-009 — Verify navigation search triggers catalog search 
+**FR Code:** FR-02 (Search, Filter and Sort)
+**Priority:** P1
+**Pre-conditions:**
+- The app is running and the Catalog page is accessible
+- Navigation bar with search input is visible
+
+**Steps:**
+- From any page, use the search input in the top navigation
+- Type a known book title (e.g., "1984") and press Enter or click the search control
+- Observe the Catalog page (or search results) for matching books
+- Repeat using a partial title and using different letter case
+
+**Expected Result:**
+- The navigation search triggers the catalog search and displays matching books
+- Search is case-insensitive and supports partial matches
+- If no matches, a clear empty-state message is shown
+
+**Actual Result:**
+- Search option in navigation bar not working 
+
+**Post-conditions:**
+- Catalog shows search results or an empty-state message
+
+**Evidence Path:** `tests/evidence/tc5.png`
+
+
+**Status:** Failed
+
+### TC-CAT-010 — Verify clickable search buttons on nav and catalog
+**FR Code:** FR-02 (Search, Filter and Sort)
+**Priority:** P2
+**Pre-conditions:**
+- The app is running and both the top navigation search and the catalog page search input are visible
+
+**Steps:**
+- Open the bookstore app and navigate to the Catalog page
+- Locate the search input in the top navigation and the search input on the Catalog page
+- Confirm a visible search button/icon exists for each input (look for button with search icon or labelled "Search")
+- Click the search button on the top navigation after entering a known book title (e.g., "1984")
+- Click the search button on the Catalog page after entering a known book title
+- Compare behavior with pressing Enter in each input
+
+**Expected Result:**
+- Each search input has a clearly visible, clickable search button
+- Clicking the button performs the same search action as pressing Enter
+- Buttons have accessible labels (e.g., aria-label="Search")
+
+**Actual Result:**
+- Both search bars lack clickable search buttons
+
+
+**Post-conditions:**
+- Search action executed and results shown or clear empty-state message displayed
+
+**Evidence Path:** `tests/evidence/tc5.png`
+
+**Status:** Open
+
+
+
 ---
 
 ### TC-CART-001: Add Book to Cart 
@@ -430,6 +523,36 @@ Status: Passed
 tests/evidence/Reject_invalid_coupon.png
 
 Status: Failed
+
+### TC-CART-009 — Verify cart quantity respects stock/limits
+**FR Code:** FR-03 (Cart) 
+**Priority:** P1
+**Pre-conditions:**
+- The app is running and the Cart page is accessible
+- At least one book exists in the catalog with a known stock quantity (e.g., stock = 10)
+
+**Steps:**
+- Add the book with known stock to the Cart
+- On the Cart page, attempt to increase the item quantity beyond the known stock (e.g., set quantity to 500)
+- Attempt to save/update the cart quantity
+- Observe UI behavior and any validation messages
+- Attempt to perform checkout with the artificially high quantity
+
+**Expected Result:**
+- The quantity control prevents setting a quantity greater than available stock
+- The UI shows a clear validation message when attempting to exceed stock (e.g., "Only 10 items available")
+- Server-side validation prevents checkout with invalid quantity
+- Cart quantity is capped to available stock and persisted
+
+**Actual Result:**
+- Added individual book quantity on cart is endless
+
+**Post-conditions:**
+- Cart quantity limited to the available stock
+
+**Evidence Path:** `tests/evidence/Bug-002.png`
+
+**Status:** Open
 
 ---
 
