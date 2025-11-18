@@ -4,7 +4,7 @@
 - React 18, React Router 6
 - Tailwind CSS
 - localStorage persistence
-- Paystack Inline (npm `@paystack/inline-js` or window script)
+- Paystack Inline (npm `@paystack/inline-js ` or window script)
 
 ## 🔐 Environment Variables
 - `REACT_APP_PAYSTACK_PUBLIC_KEY` — Paystack public key (`pk_test_...` for test)

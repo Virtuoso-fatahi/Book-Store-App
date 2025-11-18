@@ -16,15 +16,15 @@
 | FR-02 | View book details (multi-image, stock, ETA) | — | ⚠️ Not Implemented | 0% |
 | FR-03-001 | Add/remove/update cart items; persist | TC-Cart-01, Jest: `StoreProvider.addToCart`, `updateCartQuantity`, `removeFromCart` | ✅ Implemented | 100% |
 | FR-03-002 | Cart subtotal, quantities, persistence | TC-Cart-02, Jest: `StoreProvider.clearCart`, `localStorage` | ✅ Implemented | 100% |
-| FR-O03 | Checkout wizard (Shipping → Review → Payment → Confirmation) | TC-Checkout-01, Jest: `CheckoutPage.wizard` | ✅ Implemented | 85% |
-| FR-O04 | Payment via Paystack with currency config | TC-Checkout-02, Jest: `paystack.test.js` (toMinorUnits, PAYSTACK_PUBLIC_KEY) | ⚠️ Partially Tested | 60% |
-| FR-O05 | Order status lifecycle (Pending → Paid → Fulfilled → Delivered) | TC-Order-01 | ⚠️ Scaffolded | 50% |
-| FR-O06 | Order history and details view | TC-Order-02 | ✅ Implemented | 100% |
+| FR-O03 | Checkout wizard (Shipping → Review → Payment → Confirmation) | TC-Checkout-01, Jest: `CheckoutPage.wizard` | ✅ Implemented | 50% |
+| FR-O04 | Payment via Paystack with currency config | TC-Checkout-02, Jest: `paystack.test.js` (toMinorUnits, PAYSTACK_PUBLIC_KEY) | ⚠️ Not Implemented | 0% |
+| FR-O05 | Order status lifecycle (Pending → Paid → Fulfilled → Delivered) | TC-Order-01 | ⚠️ Not Implemented | 0% |
+| FR-O06 | Order history and details view | TC-Order-02 | ⚠️ Not Implemented | 100% |
 | FR-O07 | CSV export (RFC4180, UTF-8, ISO dates) | — | ⚠️ Not Implemented | 0% |
 | FR-O08 | Refunds, returns, audit trail | — | ⚠️ Not Implemented | 0% |
-| FR-A01 | Admin page guard (role-based access) | TC-Admin-01, Jest: `AdminPage.guard` | ✅ Implemented | 100% |
-| FR-A02 | Catalog CRUD (stub) | — | ⚠️ Stub Only | 20% |
-| FR-A03 | Orders dashboard, inventory (stub) | — | ⚠️ Stub Only | 20% |
+| FR-A01 | Admin page guard (role-based access) | TC-Admin-01, Jest: `AdminPage.guard` | ⚠️ Partly Implemented | 25% |
+| FR-A02 | Catalog CRUD (stub only) | — | ⚠️ Not Implemented | 10% |
+| FR-A03 | Orders dashboard, inventory (stub only) | — | ⚠️ Not Implement | 20% |
 | FR-UI01 | Navbar (search, cart link, responsive) | TC-UI-01, Jest: `Navbar.test.js` | ✅ Implemented | 100% |
 | FR-UI02 | BookCard and BookList rendering | TC-UI-02, Jest: `BookCard.test.js`, `BookList.test.js` | ✅ Implemented | 100% |
 | FR-UI03 | Form labels, ARIA, keyboard nav | TC-A11y-01, Jest: `Navbar.test.js` (label + sr-only) | ⚠️ Partial | 70% |

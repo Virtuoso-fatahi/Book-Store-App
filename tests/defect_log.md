@@ -124,7 +124,6 @@ Cart quantity is not limited to database quatity
 - The app lacks stock data. 
 - The fix may involve creating a database.  
 
-
 -- 
 
 ## BUG-006
