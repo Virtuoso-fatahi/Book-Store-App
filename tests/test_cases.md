@@ -28,7 +28,7 @@ FR Code: FR-02 (Search, Filter and Sort)
 - Catalog shows only the searched books
 - The search word stays in the input until cleared
 
-**Evidence Path:** tests/evidence/WhatsApp Image 2025-11-11 at 14.29.32_e234e0d6.jpg
+**Evidence Path:** tests/evidence/book_title.png
 
 Status: Passed
 
@@ -61,7 +61,7 @@ FR Code: FR-02 (Search, Filter and Sort)
 - Search shows only books by that author
 - Author names are clearly displayed in the results
 
-**Evidence Path:** tests/evidence/image.png
+**Evidence Path:** tests/evidence/author.png
 
 Status: Passed
 
@@ -92,7 +92,7 @@ FR Code: FR-02 (Search, Filter and Sort)
 - Search results are displayed based on keyword relevance
 - No wrong or unrelated results are shown
 
-**Evidence Path:** tests/evidence/CAT-003-search-description.png
+**Evidence Path:** tests/evidence/description.png
 
 **Status:** Failed
 
