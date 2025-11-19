@@ -28,7 +28,8 @@ FR Code: FR-02 (Search, Filter and Sort)
 - Catalog shows only the searched books
 - The search word stays in the input until cleared
 
-**Evidence Path:** tests/evidence/WhatsApp Image 2025-11-11 at 14.29.32_e234e0d6.jpg
+**Evidence Path:** 
+![Search Books by Title](./evidence/WhatsApp%20Image%202025-11-11%20at%2014.29.32_e234e0d6.jpg)
 
 Status: Passed
 
@@ -61,10 +62,11 @@ FR Code: FR-02 (Search, Filter and Sort)
 - Search shows only books by that author
 - Author names are clearly displayed in the results
 
-**Evidence Path:** tests/evidence/image.png
+**Evidence Path:**
+![Search Books by Author](./evidence/image.png)
 
 Status: Passed
-
+ 
 ---
 
 ### 3. TC-CAT-003: Search by Description
@@ -92,7 +94,9 @@ FR Code: FR-02 (Search, Filter and Sort)
 - Search results are displayed based on keyword relevance
 - No wrong or unrelated results are shown
 
-**Evidence Path:** tests/evidence/CAT-003-search-description.png
+**Evidence Path:** 
+![Search Books by Description](./evidence/CAT-003-search-description.png)
+
 
 **Status:** Failed
 
@@ -123,7 +127,8 @@ FR Code: FR-02 (Search, Filter and Sort)
 - Catalog resets to its normal view
 - Search bar becomes empty again
 
-**Evidence Path:** tests/evidence/(tc4.png)
+**Evidence Path:** 
+![Search Books by Description](./evidence/tc4.png)
 
 **Status:** Passed
 
@@ -150,7 +155,8 @@ FR Code: FR-02 (Search, Filter and Sort)
 **Post-conditions:**
 - Search input should be cleaned automatically by trimming spaces
 
-**Evidence Path:** tests/evidence/tc5.png
+**Evidence Path:**
+![Search Books by Description](./evidence/tc5.png)
 
 **Status:** Failed
 
@@ -179,6 +185,7 @@ FR Code(s): FR-02
 - Genre filter active.
 
 **Evidence path:** tests/evidence/genre.png
+![Search Books by Description](./evidence/genre.png)
 
 **Status:** Passed
 
@@ -196,7 +203,7 @@ FR Code: FR-02 (Search, Filter and Sort)
 - Compare results.
 
 **Expected Result:**
--diacritics-insensitive search returns both. Note: Current known limitation may fail — record behaviour.
+- diacritics-insensitive search returns both. Note: Current known limitation may fail — record behaviour.
 
 **Actual results**
 - no books are shown when diacritics are used
@@ -205,6 +212,7 @@ FR Code: FR-02 (Search, Filter and Sort)
 - Diactritics are not supported
 
 **Evidence Path:** tests/evidence/diacritics.png
+![Search handles diacritics](./evidence/diacritics.png)
 
 **Status:** Failed
 
@@ -231,12 +239,13 @@ FR Code: FR-02 (Search, Filter and Sort)
 - Applying a sort orders the results as selected
 
 **Actual Result:**
--  No filter or sort option in catalog page 
+- No filter or sort option in catalog page 
 
 **Post-conditions:**
 - Catalog shows filtered and/or sorted list according to selections
 
-**Evidence Path:** `tests/evidence/tc5.png`
+**Evidence Path:**
+![Verify Filter and Sort](./evidence/tc5.png)
 
 **Status:** Failed
 
@@ -266,7 +275,8 @@ FR Code: FR-02 (Search, Filter and Sort)
 **Post-conditions:**
 - Catalog shows search results or an empty-state message
 
-**Evidence Path:** `tests/evidence/tc5.png`
+**Evidence Path:** 
+![Verify navigation search](./evidence/tc5.png)
 
 **Status:** Failed
 
@@ -1346,7 +1356,7 @@ tests/evidence/pay button.png
 - No user data modified
 
 **Evidence:**
-![LCP > 2.5 seconds](tests/evidence/lcp.png "Optional Title")
+![LCP > 2.5 seconds](./evidence/lcp.png "LCP > 2.5 seconds")
 
 **Status:** Failed
 
