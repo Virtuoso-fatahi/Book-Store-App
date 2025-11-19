@@ -13,8 +13,8 @@ This final report documents comprehensive testing of the Book Store App across f
 
 ### Key Metrics
 - **Total Test Cases:** 49
-- **Passed:** 27 (55%)
-- **Failed:** 22 (45%)
+- **Passed:** 26 (55%)
+- **Failed:** 23 (45%)
 - **Total Defects Logged:** 22
 - **Critical:** 2 | **Major:** 10 | **Minor:** 10
 
