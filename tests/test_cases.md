@@ -28,8 +28,7 @@ FR Code: FR-02 (Search, Filter and Sort)
 - Catalog shows only the searched books
 - The search word stays in the input until cleared
 
-**Evidence Path:** 
-![Search Books by Title](./evidence/WhatsApp%20Image%202025-11-11%20at%2014.29.32_e234e0d6.jpg)
+**Evidence Path:** ![Search Books by Title](./evidence/book_title.png)
 
 Status: Passed
 
@@ -62,8 +61,7 @@ FR Code: FR-02 (Search, Filter and Sort)
 - Search shows only books by that author
 - Author names are clearly displayed in the results
 
-**Evidence Path:**
-![Search Books by Author](./evidence/image.png)
+**Evidence Path:** ![Search by Author Name](./evidence/author.png)
 
 Status: Passed
  
@@ -94,9 +92,7 @@ FR Code: FR-02 (Search, Filter and Sort)
 - Search results are displayed based on keyword relevance
 - No wrong or unrelated results are shown
 
-**Evidence Path:** 
-![Search Books by Description](./evidence/CAT-003-search-description.png)
-
+**Evidence Path:** ![Search by Description](./evidence/description.png)
 
 **Status:** Failed
 
@@ -128,7 +124,7 @@ FR Code: FR-02 (Search, Filter and Sort)
 - Search bar becomes empty again
 
 **Evidence Path:** 
-![Search Books by Description](./evidence/tc4.png)
+![Empty Query Returns Full List](./evidence/tc4.png)
 
 **Status:** Passed
 
@@ -155,8 +151,8 @@ FR Code: FR-02 (Search, Filter and Sort)
 **Post-conditions:**
 - Search input should be cleaned automatically by trimming spaces
 
-**Evidence Path:**
-![Search Books by Description](./evidence/tc5.png)
+**Evidence Path:** ![Search with Whitespace Trim](./evidence/tc5.png)
+
 
 **Status:** Failed
 
@@ -184,8 +180,8 @@ FR Code(s): FR-02
 **Post-conditions:** 
 - Genre filter active.
 
-**Evidence path:** tests/evidence/genre.png
-![Search Books by Description](./evidence/genre.png)
+**Evidence Path:** 
+![Search by genre](./evidence/genre.png)
 
 **Status:** Passed
 
@@ -211,7 +207,7 @@ FR Code: FR-02 (Search, Filter and Sort)
 **Post-conditions:**
 - Diactritics are not supported
 
-**Evidence Path:** tests/evidence/diacritics.png
+**Evidence Path:** 
 ![Search handles diacritics](./evidence/diacritics.png)
 
 **Status:** Failed
@@ -244,8 +240,8 @@ FR Code: FR-02 (Search, Filter and Sort)
 **Post-conditions:**
 - Catalog shows filtered and/or sorted list according to selections
 
-**Evidence Path:**
-![Verify Filter and Sort](./evidence/tc5.png)
+**Evidence Path:** ![Search handles diacritics](./evidence/tc5.png)
+
 
 **Status:** Failed
 
@@ -307,7 +303,7 @@ FR Code: FR-02 (Search, Filter and Sort)
 **Post-conditions:**
 - Search action executed and results shown or clear empty-state message displayed
 
-**Evidence Path:** `tests/evidence/tc5.png`
+**Evidence Path:** ![Search handles diacritics](./evidence/tc5.png)
 
 **Status:** Failed
 
@@ -339,7 +335,7 @@ FR Code: FR-03 (Search, Filter and Sort)
 - Book persists in cart (localStorage)
 - Cart count updated
 
-**Evidence Path:** tests/evidence/Add_book_to_cart.png
+**Evidence Path:** ![Add Book to Cart](./evidence/Add_book_to_cart.png)
 
 **Status:** Passed
 
@@ -367,7 +363,7 @@ FR Code: FR-03 (Search, Filter and Sort)
 **Post-conditions:**
 - Multiple items persist in localStorage
 
-**Evidence Path:** tests/evidence/Multiple_different_books.png
+**Evidence Path:** ![Add Multiple Different Books](./evidence/book_additions.png)
 
 **Status:** Passed
 
@@ -398,7 +394,7 @@ FR Code: FR-03 (Search, Filter and Sort)
 - New qty persisted
 - Totals accurate
 
-**Evidence Path:** tests/evidence/Update_Item_quantity.png
+**Evidence Path:** ![Update Item Quantity](./evidence/Update_Item_quantity.png)
 
 **Status:** Passed
 
@@ -428,7 +424,7 @@ FR Code: FR-03 (Search, Filter and Sort)
 - Cart updated in localStorage
 - Remaining items unchanged
 
-**Evidence Path:** tests/evidence/Remove_item_from_cart_1.png
+**Evidence Path:** ![Remove Item from Cart](./evidence/tc4.png)
 tests/evidence/Remove_item_from_cart_2.png
 
 **Status:** Passed
@@ -457,7 +453,7 @@ tests/evidence/Remove_item_from_cart_2.png
 **Post-conditions:**
 - Cart data persistent across sessions
 
-**Evidence Path:** tests/evidence/Cart_persists_across_refresh_1.png
+**Evidence Path:** ![Cart Persists Across Refresh](./evidence/Cart_persists_across_refresh_1.png)
 tests/evidence/Cart_persists_across_refresh_2.png
 tests/evidence/Cart_persists_across_refresh_3.png
 
@@ -485,7 +481,7 @@ tests/evidence/Cart_persists_across_refresh_3.png
 **Post-conditions:**
 - Cart remains empty until items added
 
-**Evidence Path:** tests/evidence/Empty_cart_message.png
+**Evidence Path:** ![Empty Cart Message](./evidence/Empty_cart_message.png)
 
 **Status:** Passed
 
@@ -512,7 +508,7 @@ tests/evidence/Cart_persists_across_refresh_3.png
 **Post-conditions:**
 - Subtotal accurate and persisted
 
-**Evidence Path:** tests/evidence/calculates_subtotal_correctly.png
+**Evidence Path:** ![Calculate Subtotal Correctly](./evidence/calculates_subtotal_correctly.png)
 
 **Status:** Passed
 
@@ -538,7 +534,7 @@ tests/evidence/Cart_persists_across_refresh_3.png
 **Post-conditions:**
 - Coupon field required
 
-**Evidence Path:** 
+**Evidence Path:** ![Reject Invalid Coupon](./evidence/Reject_invalid_coupon.png)
 tests/evidence/Reject_invalid_coupon.png
 
 **Status:** Failed
@@ -571,7 +567,7 @@ tests/evidence/Reject_invalid_coupon.png
 **Post-conditions:**
 - Cart quantity limited to the available stock
 
-**Evidence Path:** `tests/evidence/Bug-002.png`
+**Evidence Path:** ![Reject Invalid Coupon](./evidence/Bug-002.png)
 
 **Status:** Failed
 
@@ -605,7 +601,7 @@ tests/evidence/Reject_invalid_coupon.png
 - Shipping data stored in session
 - Navigation to Review step
 
-**Evidence Path:** `tests/evidence/cart-fatahi-2.png`
+**Evidence Path:** ![Enter Shipping Information](./evidence/cart-fatahi-2.png)
 
 **Status:** Passed
 
@@ -636,7 +632,7 @@ tests/evidence/Reject_invalid_coupon.png
 - Form remains on Shipping step
 - User can correct and retry
 
-**Evidence Path:** tests/evidence/cart-fatahi-3.png
+**Evidence Path:** ![Validate Email Format](./evidence/cart-fatahi-3.png)
 
 **Status:** Failed
 
@@ -664,7 +660,7 @@ tests/evidence/Reject_invalid_coupon.png
 - Form stays on Shipping step
 - User prompted to complete
 
-**Evidence Path:** tests/evidence/cart-fatahi-3B.png
+**Evidence Path:** ![Require All Shipping Fields](./evidence/cart-fatahi-3B.png)
 
 **Status:** Passed
 
@@ -697,7 +693,7 @@ tests/evidence/Reject_invalid_coupon.png
 - Review data reflects checkout data
 - Ready to proceed to Payment
 
-**Evidence Path:** tests/evidence/cart-fatahi-5.png
+**Evidence Path:** ![Review Order Summary](./evidence/cart-fatahi-5.png)
 
 **Status:** Failed
 
@@ -725,7 +721,7 @@ tests/evidence/Reject_invalid_coupon.png
 - Can edit shipping if needed
 - Can proceed forward again
 
-**Evidence Path:** tests/evidence/cart-fatahi-6.png
+**Evidence Path:** ![Back Button Preserves Data](./evidence/cart-fatahi-6.png)
 
 **Status:** Passed
 
@@ -750,7 +746,7 @@ tests/evidence/Reject_invalid_coupon.png
 **Post-conditions:**
 - Cannot proceed to checkout with empty cart
 
-**Evidence Path:** tests/evidence/cart-fatahi-7.png
+**Evidence Path:** ![Checkout Disabled with Empty Cart](./evidence/cart-fatahi-7.png)
 
 **Status:** Passed
 
@@ -776,8 +772,8 @@ tests/evidence/Reject_invalid_coupon.png
 **Post-conditions:**
 - Coupon field required
 
-**Evidence Path:** 
-tests/evidence/Apply_valid_coupon.png
+**Evidence Path:** ![Apply Valid Coupon](./evidence/Apply_valid_coupon.png)
+
 
 **Status:** Failed
 
@@ -807,7 +803,7 @@ tests/evidence/Apply_valid_coupon.png
 - No focus lost
 - keyboard navigation stable
 
-**Evidence Path:** tests/evidence/modal_a11y.png
+**Evidence Path:** ![Modal accessibility — focus return and aria-modal](./evidence/pay_button.png)
 
 **Status:** Passed
 
@@ -835,7 +831,7 @@ tests/evidence/Apply_valid_coupon.png
 **Post-conditions:**
 - Totals documented
 
-**Evidence Path:** tests/evidence/rounding_variance.png
+**Evidence Path:** ![Rounding variance check (line items vs grand total)](./evidence/calculates_subtotal_correctly.png)
 
 **Status:** Failed
 
@@ -869,7 +865,7 @@ tests/evidence/Apply_valid_coupon.png
 - Payment gateway initialized
 - Ready for user input or test card
 
-**Evidence Path:** tests/evidence/cart-fatahi-8.png
+**Evidence Path:** ![Initialize Paystack Payment](./evidence/cart-fatahi-8.png)
 
 **Status:** Failed
 
@@ -898,7 +894,7 @@ tests/evidence/Apply_valid_coupon.png
 **Post-conditions:**
 - Payment not initialized
 
-**Evidence Path:** tests/evidence/cart-fatahi-8.png
+**Evidence Path:** ![Currency Validation](./evidence/cart-fatahi-8.png)
 
 **Status:** Failed
 
@@ -930,8 +926,8 @@ tests/evidence/Apply_valid_coupon.png
 **Post-conditions:**
 - Availability of the 'paystack_key' would enable the user to checkout and view the order history and details.
 
-**Evidence Path:** 
-tests/evidence/Order history and details.png
+**Evidence Path:** ![Check User order history and details](./evidence/checkout_performance.png)
+
 
 **Status:** Failed
 
@@ -955,7 +951,7 @@ tests/evidence/Order history and details.png
 **Post-conditions:**
 - Admin can see gateway references for reconciliation.
                     
-**Evidence Path:** tests/evidence/review_one_per_user.png
+**Evidence Path:** ![Admin is unauthorized](./evidence/admin.png)
 
 **Status:** Failed
 
@@ -981,7 +977,7 @@ tests/evidence/Order history and details.png
 **Post-conditions:**
 - Only one review from the user exists for the book until deleted
 
-**Evidence Path:** tests/evidence/review_one_per_user.png
+**Evidence Path:** ![One review per purchaser; edit & delete (FR-U01)](./evidence/admin.png)
 
 **Status:** Failed
 
@@ -1007,7 +1003,7 @@ tests/evidence/Order history and details.png
 **Post-conditions:**
 - Moderation audit visible
 
-**Evidence Path:** tests/evidence/moderation_flow.png
+**Evidence Path:** ![Moderation flow — report → admin queue → action (FR-U02/FR-M04)](./evidence/admin.png)
 
 **Status:** Failed
 
@@ -1034,7 +1030,7 @@ tests/evidence/Order history and details.png
 **Post-conditions:**
 - Order timeline accurate
 
-**Evidence Path:** tests/evidence/order_lifecycle.png
+**Evidence Path:** ![Order lifecycle transitions (Pending → Paid → Fulfilled → Delivered)](./evidence/admin.png)
 
 **Status:** Failed
 
@@ -1059,7 +1055,7 @@ tests/evidence/Order history and details.png
 **Post-conditions:**
 - Accounting fields reflect refunded amounts
 
-**Evidence Path:** tests/evidence/refund_full_partial.png
+**Evidence Path:** ![Full and partial refunds (FR-R02)](./evidence/admin.png)
 
 **Status:** Failed
 
@@ -1086,7 +1082,7 @@ tests/evidence/Order history and details.png
 **Post-conditions:**
 - No broken data inserted
 
-**Evidence Path:** tests/evidence/csv_import.png
+**Evidence Path:** ![CSV import sanity (orders CSV import edge cases)](./evidence/admin.png)
 
 **Status:** Failed
 
@@ -1163,8 +1159,8 @@ tests/evidence/book_additions.png
 **Post-conditions:**
  None
 
-**Evidence:** 
-tests/evidence/pay button.png
+**Evidence:** ![Button and link usability](./evidence/pay_button.png)
+
 
 **Status:** Passed
 
@@ -1212,7 +1208,7 @@ tests/evidence/pay button.png
 **Post-conditions:** 
 - None
 
-**Evidence:** tests/evidence/error_message.png
+**Evidence:** ![Error Message Usability](./evidence/cart-fatahi-3.png)
 
 **Status:** Passed
 
@@ -1236,7 +1232,7 @@ tests/evidence/pay button.png
 **Post-conditions:** 
 - None
 
-**Evidence:** tests/evidence/browser_compatibility.png
+**Evidence:** ![Browser Compatibility](./evidence/browser_compatibility.png)
 
 **Status:** Passed
 
@@ -1257,7 +1253,7 @@ tests/evidence/pay button.png
 **Post-conditions:**
 - Cart still contains items
 
-**Evidence:** tests/evidence/cart_preserved.png
+**Evidence:** ![Cart Data Presrvation](./evidence/cart_persists_after_refresh_3.png)
 
 **Status:** Passed
 
@@ -1282,9 +1278,9 @@ tests/evidence/pay button.png
 **Post-conditions:**
 - Order confirmed
 
-**Evidence:**  tests/evidence/checkout_performance.png
+**Evidence:**  ![Checkout_performance](./evidence/checkout_performance.png)
 
-**Status:** Passed
+**Status:** failed
 
 ---
 
@@ -1382,7 +1378,7 @@ tests/evidence/pay button.png
 **Post-conditions:**
 - Page fully loaded with stable layout
 
-**Evidence:** tests/evidence/lazyloading.png
+**Evidence:** ![lazy loading of Images](./evidence/lazyloading.png)
 
 **Status:** Passed
 
