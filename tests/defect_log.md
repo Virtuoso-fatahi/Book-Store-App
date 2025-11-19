@@ -47,7 +47,7 @@
 
 
 **Attachments:**  
-`tests/evidence/tc5.png`  
+![Search option in navigation bar not working](./evidence/tc5.png)  
 
 **Notes:**  
 - Likely missing event listener or incorrect route linking between navigation bar search and catalog search function.
@@ -76,7 +76,7 @@
 - Both search inputs have no clickable search buttons — user must press Enter manually.
 
 **Attachments:**  
-`tests/evidence/tc5.png`  
+![Both search bars lack clickable search buttons](./evidence/tc5.png)  
 
 **Notes:**  
 - Reduces usability and accessibility, especially for mobile users or users unfamiliar with keyboard shortcuts.
@@ -169,7 +169,7 @@ Cart quantity is not limited to database quatity
 - User unable to make payment
 
 **Attachments:**  
-`tests/evidence/cart-fatahi-8`  
+![Initialized payment gateway](./evidence/cart-fatahi-8.png)  
 
 **Notes:**  
 - The app lacks paystack integration. 
