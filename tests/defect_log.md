@@ -34,8 +34,8 @@
 
 
 **Steps to Reproduce:**
-1. Go to the Catalog page  
-2. Open the bookstore app
+1. Open the bookstore app
+2. Go to the Catalog page 
 3. Try using the search bar in the top navigation
 4. Type the book title and press Enter  
 
