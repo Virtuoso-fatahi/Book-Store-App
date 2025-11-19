@@ -95,50 +95,47 @@ This final report documents comprehensive testing of the Book Store App across f
 - Order state
 
 #### Order
-Executed TC-ORDER-001 and admin CSV import test TC-ADMIN-006 (order history, CSV import sanity).
-Key checks: order creation on successful payment, order history access, CSV import validation and format (UTF-8, dot decimals).
-Results: order history inaccessible due to payment blocker (failed); CSV import/admin tools not available (failed).
-Evidence & next steps: enable payment flow first, implement order persistence and CSV import validation with locale-safe decimals.
-Admin
+- Order creation on successful payment
+- Order history access
+- CSV import validation and format (UTF-8, dot decimals).
 
 #### Admin
-Executed TC-ADMIN-001 → TC-ADMIN-006 (auth/access control, review moderation, refunds, order lifecycle).
-Key checks: admin access control, moderation queue, refunds, order lifecycle transitions and audit logs.
-Results: most admin functions inaccessible/unauthorized (failed), CSV/refund tools not available.
-Evidence & next steps: implement role checks, expose admin console behind secure auth, add audit trails and refund simulation.
+- Admin access control
+- Moderation queue
+- Refunds
+- Order lifecycle transitions
+- Audit logs.
 
 #### Notifications
+- Mark-all-read behavior
+- LocalStorage persistence
+- UI sync.
 
-Mapped tests to TC-RISK-L1 and relevant UI checks (badge count, mark-all-read persistence).
-Key checks: badge increments, mark-all-read behavior, localStorage persistence and UI sync.
-Results: test design present in risk cases; implement/execute automated Jest checks to assert badge -> 0 after mark-all-read.
-Evidence & next steps: add tests that modify tests/evidence/app.notifications and assert UI badge update.
 ### Non‑Functional
 #### Accessibility
 
-Executed TC-CHECKOUT-008, TC-NF-009, TC-NF-010 (modal focus, keyboard nav, screen-reader announcements).
-Key checks: focus management, aria-live for form errors, full keyboard navigation coverage.
-Results: modal a11y, keyboard navigation and screen-reader messages passed; evidence in modal_a11y.png and related files.
-Evidence & next steps: expand axe scans and add automated a11y tests in CI.
+- Focus management
+- Aria-live for form errors
+- Full keyboard navigation coverage.
+
 #### Performance
 
-Executed TC-NF-008, TC-NF-011, TC-NF-012 (checkout perf, LCP, image lazy-loading).
-Key checks: checkout responsiveness under load, LCP <= 2.5s, lazy-loading images and explicit dimensions.
-Results: some perf tests passed (checkout under synthetic load), LCP > 2.5s failed, lazy-loading passed.
-Evidence & next steps: gather Lighthouse reports, optimize LCP (critical CSS, image sizing, preloads).
+- Checkout responsiveness under load
+- LCP <= 2.5s
+- Lazy-loading images 
+- Explicit dimensions.
+
 #### Compatibility
 
-Executed TC-NF-006 and cross-browser/manual checks (Chrome, Firefox, Safari, Edge).
-Key checks: layout and feature consistency across target browsers and device sizes.
-Results: browser compatibility tests passed on tested matrix; record in tests/evidence/browser_compatibility.png.
-Evidence & next steps: expand matrix to latest two major versions and add CI cross-browser smoke tests.
+- Cross-browser/manual checks (Chrome, Firefox, Safari, Edge).
+- Layout and feature consistency across target browsers and device sizes.
+
 #### Security hygiene
 
-Mapped to TC-RISK-M3 and admin/auth tests (XSS sanitization, auth checks, storage safety).
-Key checks: input sanitization for UGC, admin access restrictions, localStorage error handling (QuotaExceeded).
-Results: sanitizer not fully validated (risk test recommends DOMPurify); admin access failing (unauthorized), storage tests present in unit suite.
-Evidence & next steps: add sanitizer integration tests, enforce server/client auth checks, harden localStorage wrappers and add Jest mocks for quota errors.
-
+- Admin/auth tests (XSS sanitization, auth checks, storage safety).
+- Input sanitization for UGC, 
+- Admin access restrictions
+- LocalStorage error handling (QuotaExceeded).
 
 ### Areas not Covered
 - Real payment capture / server-side reconciliation (only client/test-mode Paystack planned).
@@ -152,6 +149,7 @@ Evidence & next steps: add sanitizer integration tests, enforce server/client au
 - Full device / real‑device mobile test matrix (device farm coverage).
 - Penetration testing (auth bypass, CSRF, broken access control) and CI security scans.
 - Monitoring/observability checks (logging, alerts, telemetry) and performance under real network conditions.
+
 --- 
 
 ## 🎯 Testing Approach
@@ -753,6 +751,6 @@ The Book Store App is **not ready for production**. Critical blockers in payment
 
 ---
 
-**Report Prepared By:** QA Testing Team  
+**Report Prepared By:** Bug-Busters  
 **Date:** November 18, 2025  
-**Approved By:** [Team Lead]
+**Approved By:** Fatahi Showunmi
