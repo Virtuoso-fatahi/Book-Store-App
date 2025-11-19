@@ -65,13 +65,93 @@ This final report documents comprehensive testing of the Book Store App across f
 - Validate error handling and user messaging
 - Test edge cases (empty cart, invalid inputs, expired sessions)
 
-### Success Criteria
-- ✅ **70%+ pass rate** on functional test cases
-- ✅ **Zero critical blockers** in payment/checkout flow (or clearly documented workarounds)
-- ✅ **WCAG AA compliance** (minor violations acceptable with prioritization)
-- ✅ **Documented evidence** for all defects with clear reproduction steps
-- ✅ **Coverage of all FR codes** with traceability matrix
+---
 
+## Area Covered
+
+### Functional Testing
+
+#### Catalog & Discovery
+
+- Title/author case-insensitive 
+- Description partial-match 
+- Diacritics handling
+- Whitespace trimming
+
+#### Cart & Checkout
+- Add to cart
+- Quantity update 
+- Remove item 
+- Cart persistence 
+- Coupon handling 
+- Stock enforcement 
+- Shipping validation
+
+#### Payments
+- Gateway initialization 
+- Currency/minor-unit math 
+- Modal open 
+- Success/cancel callbacks 
+- Order state
+
+#### Order
+Executed TC-ORDER-001 and admin CSV import test TC-ADMIN-006 (order history, CSV import sanity).
+Key checks: order creation on successful payment, order history access, CSV import validation and format (UTF-8, dot decimals).
+Results: order history inaccessible due to payment blocker (failed); CSV import/admin tools not available (failed).
+Evidence & next steps: enable payment flow first, implement order persistence and CSV import validation with locale-safe decimals.
+Admin
+
+#### Admin
+Executed TC-ADMIN-001 → TC-ADMIN-006 (auth/access control, review moderation, refunds, order lifecycle).
+Key checks: admin access control, moderation queue, refunds, order lifecycle transitions and audit logs.
+Results: most admin functions inaccessible/unauthorized (failed), CSV/refund tools not available.
+Evidence & next steps: implement role checks, expose admin console behind secure auth, add audit trails and refund simulation.
+
+#### Notifications
+
+Mapped tests to TC-RISK-L1 and relevant UI checks (badge count, mark-all-read persistence).
+Key checks: badge increments, mark-all-read behavior, localStorage persistence and UI sync.
+Results: test design present in risk cases; implement/execute automated Jest checks to assert badge -> 0 after mark-all-read.
+Evidence & next steps: add tests that modify tests/evidence/app.notifications and assert UI badge update.
+### Non‑Functional
+#### Accessibility
+
+Executed TC-CHECKOUT-008, TC-NF-009, TC-NF-010 (modal focus, keyboard nav, screen-reader announcements).
+Key checks: focus management, aria-live for form errors, full keyboard navigation coverage.
+Results: modal a11y, keyboard navigation and screen-reader messages passed; evidence in modal_a11y.png and related files.
+Evidence & next steps: expand axe scans and add automated a11y tests in CI.
+#### Performance
+
+Executed TC-NF-008, TC-NF-011, TC-NF-012 (checkout perf, LCP, image lazy-loading).
+Key checks: checkout responsiveness under load, LCP <= 2.5s, lazy-loading images and explicit dimensions.
+Results: some perf tests passed (checkout under synthetic load), LCP > 2.5s failed, lazy-loading passed.
+Evidence & next steps: gather Lighthouse reports, optimize LCP (critical CSS, image sizing, preloads).
+#### Compatibility
+
+Executed TC-NF-006 and cross-browser/manual checks (Chrome, Firefox, Safari, Edge).
+Key checks: layout and feature consistency across target browsers and device sizes.
+Results: browser compatibility tests passed on tested matrix; record in tests/evidence/browser_compatibility.png.
+Evidence & next steps: expand matrix to latest two major versions and add CI cross-browser smoke tests.
+#### Security hygiene
+
+Mapped to TC-RISK-M3 and admin/auth tests (XSS sanitization, auth checks, storage safety).
+Key checks: input sanitization for UGC, admin access restrictions, localStorage error handling (QuotaExceeded).
+Results: sanitizer not fully validated (risk test recommends DOMPurify); admin access failing (unauthorized), storage tests present in unit suite.
+Evidence & next steps: add sanitizer integration tests, enforce server/client auth checks, harden localStorage wrappers and add Jest mocks for quota errors.
+
+
+### Areas not Covered
+- Real payment capture / server-side reconciliation (only client/test-mode Paystack planned).
+- Multi‑currency catalog management and locale-specific pricing display & formatting.
+- Shipping carrier integrations (rates, tracking, ETA APIs).
+- Automated E2E tests for full Paystack flows using headless gateway or service mocks.
+- Refund financial reconciliation & accounting‑level checks beyond UI simulation.
+- Internationalization (i18n) and locale specific CSV variants (decimal comma, date formats) in automated tests.
+- Deep admin workflows (bulk operations, role management, audit search) — admin UI mostly unreachable.
+- Long‑running concurrency for stock race conditions (real backend race simulation).
+- Full device / real‑device mobile test matrix (device farm coverage).
+- Penetration testing (auth bypass, CSRF, broken access control) and CI security scans.
+- Monitoring/observability checks (logging, alerts, telemetry) and performance under real network conditions.
 --- 
 
 ## 🎯 Testing Approach
