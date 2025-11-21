@@ -6,6 +6,13 @@
 **Testing Period:** November 5–18, 2025
 
 ---
+## Team Information
+| Role | Name | Responsibilities |
+|------|------|------------------|
+| Test Manager | Fatahi Showunmi | Planning, scheduling, coordination, metric tracking |
+| Risk Analyst | Dennis Gachuru | Risk identification, prioritization, test design linkage |
+| Test Executor | Whitney Wairimu | Execution, evidence capture, defect logging |
+---
 
 ## 📊 Executive Summary
 
@@ -13,8 +20,8 @@ This final report documents comprehensive testing of the Book Store App across f
 
 ### Key Metrics
 - **Total Test Cases:** 49
-- **Passed:** 26 (55%)
-- **Failed:** 23 (45%)
+- **Passed:** 27 (55%)
+- **Failed:** 22 (45%)
 - **Total Defects Logged:** 22
 - **Critical:** 2 | **Major:** 10 | **Minor:** 10
 
