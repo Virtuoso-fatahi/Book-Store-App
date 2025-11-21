@@ -16,7 +16,7 @@
 - No filter or sort options available. 
 
 **Attachments:**  
-`tests/evidence/tc5.png`  
+![No filter or sort option in catalog page](./evidence/tc5.png)  
 
 **Notes:**  
 - Feature missing — affects user experience  
@@ -104,7 +104,7 @@ The system should trim the extra spaces and return results for “To Kill a Mock
 No books are shown when spaces are present around the search query.  
 
 **Attachments:**  
-`tests/evidence/tc5.png`  
+![Search with leading/trailing spaces returns no results](./evidence/tc5.png)  
 
 **Notes:**  
 - This can confuse users since they might accidentally type spaces.  
@@ -133,7 +133,7 @@ Cart quantity should not exceed quantity in the database
 Cart quantity is not limited to database quatity
 
 **Attachments:**  
-`tests/evidence/Bug-002.png`  
+![Added individual book quantity on cart is endless](./evidence/Bug-002.png)  
 
 **Notes:**  
 - The app lacks stock data. 
@@ -206,7 +206,7 @@ Cart quantity is not limited to database quatity
 - User unable to make payment
 
 **Attachments:**  
-`tests/evidence/cart-fatahi-8`  
+![Unsupported Currency Validation](./evidence/cart-fatahi-8.png)  
 
 **Notes:**  
 - The app lacks paystack integration. 
@@ -232,15 +232,16 @@ Cart quantity is not limited to database quatity
 - Books whose descriptions contain the keyword (partial matches) should appear in results
 
 **Actual Result:**
-- Only exact description matches are returned; partial matches are ignored
+- partial descriptions are not returned
 
 **Attachments:**
-`tests/evidence/CAT-003-search-description.png`
+![Catalog search by description does not support partial matches](./evidence/partial_description.png)
 
 **Notes:**
 - Search tokenization or indexing may be too strict; consider using substring or token-based matching.
 
 **Status:** open
+
 
 --
 
@@ -263,12 +264,13 @@ Cart quantity is not limited to database quatity
 - No results shown when diacritics are used
 
 **Attachments:**
-`tests/evidence/diacritics.png`
+![Search does not handle diacritics (accented characters)](./evidence/diacritics.png)
 
 **Notes:**
 - Normalize strings (NFKD/NFKC) before comparison to support accent-insensitive search.
 
 **Status:** open
+
 
 --
 
@@ -292,13 +294,14 @@ Cart quantity is not limited to database quatity
 - Valid coupons are not applied; checkout fails and coupon details are not available; invalid coupon flow may block progress
 
 **Attachments:**
-`tests/evidence/Reject_invalid_coupon.png`
-`tests/evidence/Apply_valid_coupon.png`
+![Coupon handling broken (valid coupons not applied; invalid coupons cause checkout failure)](./evidence/Reject_invalid_coupon.png)
+![Coupon handling broken (valid coupons not applied; invalid coupons cause checkout failure)](./evidence/Apply_valid_coupon.png)
 
 **Notes:**
 - Check coupon validation and discount application logic; ensure coupon service returns clear error codes and UI handles them gracefully.
 
 **Status:** open
+
 
 --
 
@@ -320,12 +323,13 @@ Cart quantity is not limited to database quatity
 - Error message behavior is inconsistent: empty field shows generic message; Next button may remain enabled; validation only triggers for some invalid patterns
 
 **Attachments:**
-`tests/evidence/cart-fatahi-3.png`
+![Email validation on Checkout Shipping step is inconsistent and permissive](./evidence/cart-fatahi-3.png)
 
 **Notes:**
 - Review client-side validation rules and HTML input attributes; ensure consistent validation and disabling of Next until corrected.
 
 **Status:** open
+
 
 --
 
@@ -348,12 +352,13 @@ Cart quantity is not limited to database quatity
 - Shipping address is missing from the Review step display
 
 **Attachments:**
-`tests/evidence/cart-fatahi-5.png`
+![Review step does not display shipping address in order summary](./evidence/cart-fatahi-5.png)
 
 **Notes:**
 - Could be rendering or state-passing issue between steps; check state persistence when moving between checkout steps.
 
 **Status:** open
+
 
 --
 
@@ -375,12 +380,13 @@ Cart quantity is not limited to database quatity
 - Tax rounding is applied per line or incorrectly, causing variance beyond acceptable limits
 
 **Attachments:**
-`tests/evidence/rounding_variance.png`
+![Rounding/tax calculation differs between line items and grand total (tax rounding issue)](./evidence/calculates_subtotal_correctly.png)
 
 **Notes:**
 - Review calculation order and rounding strategy (e.g., round only final totals, not intermediate tax per line).
 
 **Status:** open
+
 
 --
 
@@ -403,12 +409,13 @@ Cart quantity is not limited to database quatity
 - Checkout is unsuccessful and order history/details are not available
 
 **Attachments:**
-`tests/evidence/Order history and details.png`
+![Order history/details inaccessible due to failed checkout](./evidence/Order history and details.png)
 
 **Notes:**
 - Likely related to payment initialization; verify order persistence even when payment gateway is in test/simulated mode.
 
 **Status:** open
+
 
 --
 
@@ -430,12 +437,13 @@ Cart quantity is not limited to database quatity
 - Admin page shows unauthorized or blocked access
 
 **Attachments:**
-`tests/evidence/review_one_per_user.png`
+![Admin page returns unauthorized for admin users](./evidence/admin.png)
 
 **Notes:**
 - Check auth/role assignment and route guards for admin routes.
 
 **Status:** open
+
 
 --
 
@@ -458,12 +466,13 @@ Cart quantity is not limited to database quatity
 - Reviews are not accessible and review actions fail
 
 **Attachments:**
-`tests/evidence/review_one_per_user.png`
+![Purchaser reviews not accessible / review flow broken](./evidence/review_one_per_user.png)
 
 **Notes:**
 - Verify review access control, existence of purchase checks, and review CRUD endpoints.
 
 **Status:** open
+
 
 --
 
@@ -486,12 +495,13 @@ Cart quantity is not limited to database quatity
 - Moderation flow is not accessible
 
 **Attachments:**
-`tests/evidence/moderation_flow.png`
+![Moderation flow (report → admin queue → action) inaccessible](./evidence/admin.png)
 
 **Notes:**
 - Check report ingestion and admin queue visibility; ensure correct permissions and queue population.
 
 **Status:** open
+
 
 --
 
@@ -513,12 +523,13 @@ Cart quantity is not limited to database quatity
 - Order lifecycle not accessible (likely due to unsuccessful payment initialization)
 
 **Attachments:**
-`tests/evidence/order_lifecycle.png`
+![Order lifecycle transitions not available (Pending → Paid → Fulfilled → Delivered)](./evidence/checkout_performance.png)
 
 **Notes:**
 - Ensure order status updates are triggered after payment callbacks and that admin timeline rendering is present.
 
 **Status:** open
+
 
 --
 
@@ -540,12 +551,13 @@ Cart quantity is not limited to database quatity
 - Admin refund tool is not accessible
 
 **Attachments:**
-`tests/evidence/refund_full_partial.png`
+![Admin refund functionality is not accessible](./evidence/checkout_performance.png)
 
 **Notes:**
 - Investigate admin tooling availability and refund API stubs.
 
 **Status:** open
+
 
 --
 
@@ -567,12 +579,13 @@ Cart quantity is not limited to database quatity
 - CSV import functionality not accessible
 
 **Attachments:**
-`tests/evidence/csv_import.png`
+![CSV import for admin missing or broken (orders CSV import edge cases)](./evidence/admin.png)
 
 **Notes:**
 - Add robust import validation and clear error reporting.
 
 **Status:** open
+
 
 --
 
@@ -594,12 +607,13 @@ Cart quantity is not limited to database quatity
 - Checkout does not complete
 
 **Attachments:**
-`tests/evidence/checkout_performance.png`
+![Checkout flow fails to complete (performance/checkout failure)](./evidence/checkout_performance.png)
 
 **Notes:**
 - Investigate backend and payment integration performance; check for timeouts.
 
 **Status:** open
+
 
 --
 
@@ -621,7 +635,7 @@ Cart quantity is not limited to database quatity
 - LCP > 2.5 seconds
 
 **Attachments:**
-`tests/evidence/lcp.png`
+![LCP is greater than target (performance regression)](./evidence/lcp.png)
 
 **Notes:**
 - Optimize critical rendering path and lazy-load below-the-fold images to meet target.
