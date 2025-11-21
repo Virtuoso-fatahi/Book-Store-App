@@ -217,35 +217,6 @@ Cart quantity is not limited to database quatity
 --
 
 ## BUG-008
-**Summary:** Catalog search by description does not support partial matches
-**Severity:** Minor
-**Priority:** Medium
-**Environment:** Chrome, Windows 11
-**Test-Case ID:** TC-CAT-003
-
-**Steps to Reproduce:**
-1. Open the Catalog page
-2. In the search box, enter a keyword that appears only in a book's description (partial word)
-3. Press Enter
-
-**Expected Result:**
-- Books whose descriptions contain the keyword (partial matches) should appear in results
-
-**Actual Result:**
-- partial descriptions are not returned
-
-**Attachments:**
-![Catalog search by description does not support partial matches](./evidence/partial_description.png)
-
-**Notes:**
-- Search tokenization or indexing may be too strict; consider using substring or token-based matching.
-
-**Status:** open
-
-
---
-
-## BUG-009
 **Summary:** Search does not handle diacritics (accented characters)
 **Severity:** Minor
 **Priority:** Medium
@@ -274,7 +245,7 @@ Cart quantity is not limited to database quatity
 
 --
 
-## BUG-010
+## BUG-009
 **Summary:** Coupon handling broken (valid coupons not applied; invalid coupons cause checkout failure)
 **Severity:** Major
 **Priority:** High
@@ -305,7 +276,7 @@ Cart quantity is not limited to database quatity
 
 --
 
-## BUG-011
+## BUG-010
 **Summary:** Email validation on Checkout Shipping step is inconsistent and permissive
 **Severity:** Major
 **Priority:** High
@@ -333,7 +304,7 @@ Cart quantity is not limited to database quatity
 
 --
 
-## BUG-012
+## BUG-011
 **Summary:** Review step does not display shipping address in order summary
 **Severity:** Major
 **Priority:** Medium
@@ -362,7 +333,7 @@ Cart quantity is not limited to database quatity
 
 --
 
-## BUG-013
+## BUG-012
 **Summary:** Rounding/tax calculation differs between line items and grand total (tax rounding issue)
 **Severity:** Medium
 **Priority:** Medium
@@ -390,7 +361,7 @@ Cart quantity is not limited to database quatity
 
 --
 
-## BUG-014
+## BUG-013
 **Summary:** Order history/details inaccessible due to failed checkout
 **Severity:** Major
 **Priority:** High
@@ -419,7 +390,7 @@ Cart quantity is not limited to database quatity
 
 --
 
-## BUG-015
+## BUG-014
 **Summary:** Admin page returns unauthorized for admin users
 **Severity:** Major
 **Priority:** High
@@ -447,7 +418,7 @@ Cart quantity is not limited to database quatity
 
 --
 
-## BUG-016
+## BUG-015
 **Summary:** Purchaser reviews not accessible / review flow broken
 **Severity:** Major
 **Priority:** Medium
@@ -476,7 +447,7 @@ Cart quantity is not limited to database quatity
 
 --
 
-## BUG-017
+## BUG-016
 **Summary:** Moderation flow (report → admin queue → action) inaccessible
 **Severity:** Major
 **Priority:** Medium
@@ -505,7 +476,7 @@ Cart quantity is not limited to database quatity
 
 --
 
-## BUG-018
+## BUG-017
 **Summary:** Order lifecycle transitions not available (Pending → Paid → Fulfilled → Delivered)
 **Severity:** Major
 **Priority:** High
@@ -533,7 +504,7 @@ Cart quantity is not limited to database quatity
 
 --
 
-## BUG-019
+## BUG-018
 **Summary:** Admin refund functionality is not accessible
 **Severity:** Major
 **Priority:** Medium
@@ -561,7 +532,7 @@ Cart quantity is not limited to database quatity
 
 --
 
-## BUG-020
+## BUG-019
 **Summary:** CSV import for admin missing or broken (orders CSV import edge cases)
 **Severity:** Minor
 **Priority:** Medium
@@ -589,7 +560,7 @@ Cart quantity is not limited to database quatity
 
 --
 
-## BUG-021
+## BUG-020
 **Summary:** Checkout flow fails to complete (performance/checkout failure)
 **Severity:** Major
 **Priority:** High
@@ -617,7 +588,7 @@ Cart quantity is not limited to database quatity
 
 --
 
-## BUG-022
+## BUG-021
 **Summary:** LCP is greater than target (performance regression)
 **Severity:** Minor
 **Priority:** Medium
